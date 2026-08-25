@@ -36,16 +36,16 @@
             cbIsActive = new ComboBox();
             txtFilterValue = new TextBox();
             dgvUsers = new DataGridView();
-            btnAddUser = new Button();
-            label2 = new Label();
-            lblRecordsCount = new Label();
-            btnClose = new Button();
             contextMenuStrip1 = new ContextMenuStrip(components);
             showDetailsToolStripMenuItem = new ToolStripMenuItem();
             addNewUserToolStripMenuItem = new ToolStripMenuItem();
             editToolStripMenuItem = new ToolStripMenuItem();
             deleteToolStripMenuItem = new ToolStripMenuItem();
             changePasswordToolStripMenuItem = new ToolStripMenuItem();
+            btnAddUser = new Button();
+            label2 = new Label();
+            lblRecordsCount = new Label();
+            btnClose = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
             contextMenuStrip1.SuspendLayout();
@@ -66,7 +66,7 @@
             // 
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Comic Sans MS", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitle.ForeColor = Color.Red;
+            lblTitle.ForeColor = Color.FromArgb(192, 0, 0);
             lblTitle.Location = new Point(464, 247);
             lblTitle.Margin = new Padding(4, 0, 4, 0);
             lblTitle.Name = "lblTitle";
@@ -121,49 +121,6 @@
             dgvUsers.CellContentClick += dgvUsers_CellContentClick;
             dgvUsers.CellContentDoubleClick += dgvUsers_CellContentDoubleClick;
             // 
-            // btnAddUser
-            // 
-            btnAddUser.Image = Properties.Resources.Add_New_User_72;
-            btnAddUser.Location = new Point(940, 292);
-            btnAddUser.Name = "btnAddUser";
-            btnAddUser.Size = new Size(90, 86);
-            btnAddUser.TabIndex = 15;
-            btnAddUser.UseVisualStyleBackColor = true;
-            btnAddUser.Click += btnAddUser_Click;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(12, 583);
-            label2.Name = "label2";
-            label2.Size = new Size(74, 23);
-            label2.TabIndex = 16;
-            label2.Text = "Records:";
-            // 
-            // lblRecordsCount
-            // 
-            lblRecordsCount.AutoSize = true;
-            lblRecordsCount.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblRecordsCount.Location = new Point(92, 583);
-            lblRecordsCount.Name = "lblRecordsCount";
-            lblRecordsCount.Size = new Size(37, 23);
-            lblRecordsCount.TabIndex = 17;
-            lblRecordsCount.Text = "???";
-            // 
-            // btnClose
-            // 
-            btnClose.BackColor = Color.Red;
-            btnClose.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnClose.ForeColor = Color.White;
-            btnClose.ImageAlign = ContentAlignment.MiddleRight;
-            btnClose.Location = new Point(1032, 574);
-            btnClose.Name = "btnClose";
-            btnClose.Size = new Size(128, 40);
-            btnClose.TabIndex = 51;
-            btnClose.Text = "Close";
-            btnClose.UseVisualStyleBackColor = false;
-            btnClose.Click += btnClose_Click;
-            // 
             // contextMenuStrip1
             // 
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { showDetailsToolStripMenuItem, addNewUserToolStripMenuItem, editToolStripMenuItem, deleteToolStripMenuItem, changePasswordToolStripMenuItem });
@@ -214,6 +171,50 @@
             changePasswordToolStripMenuItem.Size = new Size(184, 38);
             changePasswordToolStripMenuItem.Text = "Change Password";
             changePasswordToolStripMenuItem.Click += changePasswordToolStripMenuItem_Click;
+            // 
+            // btnAddUser
+            // 
+            btnAddUser.Image = Properties.Resources.Add_New_User_72;
+            btnAddUser.Location = new Point(940, 292);
+            btnAddUser.Name = "btnAddUser";
+            btnAddUser.Size = new Size(90, 86);
+            btnAddUser.TabIndex = 15;
+            btnAddUser.UseVisualStyleBackColor = true;
+            btnAddUser.Click += btnAddUser_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(12, 583);
+            label2.Name = "label2";
+            label2.Size = new Size(74, 23);
+            label2.TabIndex = 16;
+            label2.Text = "Records:";
+            // 
+            // lblRecordsCount
+            // 
+            lblRecordsCount.AutoSize = true;
+            lblRecordsCount.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblRecordsCount.Location = new Point(92, 583);
+            lblRecordsCount.Name = "lblRecordsCount";
+            lblRecordsCount.Size = new Size(37, 23);
+            lblRecordsCount.TabIndex = 17;
+            lblRecordsCount.Text = "???";
+            // 
+            // btnClose
+            // 
+            btnClose.BackColor = Color.FromArgb(192, 0, 0);
+            btnClose.FlatStyle = FlatStyle.Flat;
+            btnClose.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnClose.ForeColor = Color.White;
+            btnClose.ImageAlign = ContentAlignment.MiddleRight;
+            btnClose.Location = new Point(1032, 574);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(128, 40);
+            btnClose.TabIndex = 51;
+            btnClose.Text = "Close";
+            btnClose.UseVisualStyleBackColor = false;
+            btnClose.Click += btnClose_Click;
             // 
             // frmListUsers
             // 

@@ -115,10 +115,11 @@
             // chkRememberMe
             // 
             chkRememberMe.AutoSize = true;
+            chkRememberMe.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             chkRememberMe.ForeColor = Color.White;
-            chkRememberMe.Location = new Point(359, 262);
+            chkRememberMe.Location = new Point(335, 262);
             chkRememberMe.Name = "chkRememberMe";
-            chkRememberMe.Size = new Size(132, 27);
+            chkRememberMe.Size = new Size(162, 31);
             chkRememberMe.TabIndex = 28;
             chkRememberMe.Text = "Remember Me";
             chkRememberMe.UseVisualStyleBackColor = true;

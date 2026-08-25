@@ -65,5 +65,10 @@ namespace DVLD.Applications.Local_Driving_License
         {
             ctrlPersonCardWithFilter1.FilteredEnabled = false;
         }
+
+        private void frmAddUpdateLocalDrivingLicesnseApplication_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

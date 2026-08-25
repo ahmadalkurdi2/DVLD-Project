@@ -41,11 +41,12 @@
             // 
             // btnClose
             // 
-            btnClose.BackColor = Color.DarkRed;
+            btnClose.BackColor = Color.FromArgb(192, 0, 0);
+            btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnClose.ForeColor = Color.White;
             btnClose.ImageAlign = ContentAlignment.MiddleRight;
-            btnClose.Location = new Point(845, 509);
+            btnClose.Location = new Point(843, 509);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(162, 40);
             btnClose.TabIndex = 50;

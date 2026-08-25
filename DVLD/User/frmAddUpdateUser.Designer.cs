@@ -80,10 +80,11 @@
             // btnPersonInfoNext
             // 
             btnPersonInfoNext.BackColor = Color.FromArgb(0, 0, 192);
+            btnPersonInfoNext.FlatStyle = FlatStyle.Flat;
             btnPersonInfoNext.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnPersonInfoNext.ForeColor = Color.White;
             btnPersonInfoNext.ImageAlign = ContentAlignment.MiddleRight;
-            btnPersonInfoNext.Location = new Point(808, 470);
+            btnPersonInfoNext.Location = new Point(802, 470);
             btnPersonInfoNext.Name = "btnPersonInfoNext";
             btnPersonInfoNext.Size = new Size(162, 40);
             btnPersonInfoNext.TabIndex = 8;
@@ -203,7 +204,7 @@
             // 
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Comic Sans MS", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitle.ForeColor = Color.Red;
+            lblTitle.ForeColor = Color.FromArgb(192, 0, 0);
             lblTitle.Location = new Point(344, 25);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(353, 45);
@@ -213,10 +214,11 @@
             // btnSave
             // 
             btnSave.BackColor = Color.Green;
+            btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSave.ForeColor = Color.White;
             btnSave.ImageAlign = ContentAlignment.MiddleRight;
-            btnSave.Location = new Point(930, 676);
+            btnSave.Location = new Point(926, 676);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(128, 40);
             btnSave.TabIndex = 51;
@@ -226,11 +228,12 @@
             // 
             // btnClose
             // 
-            btnClose.BackColor = Color.Red;
+            btnClose.BackColor = Color.FromArgb(192, 0, 0);
+            btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnClose.ForeColor = Color.White;
             btnClose.ImageAlign = ContentAlignment.MiddleRight;
-            btnClose.Location = new Point(796, 676);
+            btnClose.Location = new Point(792, 676);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(128, 40);
             btnClose.TabIndex = 50;

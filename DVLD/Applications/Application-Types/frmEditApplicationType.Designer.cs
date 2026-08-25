@@ -50,7 +50,7 @@
             // 
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Comic Sans MS", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitle.ForeColor = Color.Red;
+            lblTitle.ForeColor = Color.FromArgb(192, 0, 0);
             lblTitle.Location = new Point(200, 63);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(417, 45);
@@ -127,7 +127,8 @@
             // 
             // btnClose
             // 
-            btnClose.BackColor = Color.FromArgb(255, 59, 48);
+            btnClose.BackColor = Color.FromArgb(192, 0, 0);
+            btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnClose.ForeColor = Color.White;
             btnClose.ImageAlign = ContentAlignment.MiddleRight;
@@ -142,6 +143,7 @@
             // button1
             // 
             button1.BackColor = Color.Green;
+            button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
             button1.ImageAlign = ContentAlignment.MiddleRight;

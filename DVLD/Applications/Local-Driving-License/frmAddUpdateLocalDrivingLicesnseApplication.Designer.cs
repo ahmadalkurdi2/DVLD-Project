@@ -65,7 +65,7 @@
             // 
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Comic Sans MS", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitle.ForeColor = Color.Red;
+            lblTitle.ForeColor = Color.FromArgb(192, 0, 0);
             lblTitle.Location = new Point(323, 34);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(525, 45);
@@ -97,9 +97,10 @@
             // 
             // ctrlPersonCardWithFilter1
             // 
-            ctrlPersonCardWithFilter1.Location = new Point(27, 6);
+            ctrlPersonCardWithFilter1.Location = new Point(39, 9);
+            ctrlPersonCardWithFilter1.Margin = new Padding(4, 5, 4, 5);
             ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
-            ctrlPersonCardWithFilter1.Size = new Size(1020, 504);
+            ctrlPersonCardWithFilter1.Size = new Size(1457, 773);
             ctrlPersonCardWithFilter1.TabIndex = 0;
             // 
             // tpApplicationInfo
@@ -268,11 +269,12 @@
             // 
             // btnClose
             // 
-            btnClose.BackColor = Color.FromArgb(255, 59, 48);
+            btnClose.BackColor = Color.FromArgb(192, 0, 0);
+            btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnClose.ForeColor = Color.White;
             btnClose.ImageAlign = ContentAlignment.MiddleRight;
-            btnClose.Location = new Point(935, 622);
+            btnClose.Location = new Point(932, 622);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(162, 40);
             btnClose.TabIndex = 12;
@@ -282,10 +284,11 @@
             // btnSave1
             // 
             btnSave1.BackColor = Color.Green;
+            btnSave1.FlatStyle = FlatStyle.Flat;
             btnSave1.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSave1.ForeColor = Color.White;
             btnSave1.ImageAlign = ContentAlignment.MiddleRight;
-            btnSave1.Location = new Point(778, 622);
+            btnSave1.Location = new Point(775, 622);
             btnSave1.Name = "btnSave1";
             btnSave1.Size = new Size(151, 40);
             btnSave1.TabIndex = 50;
@@ -305,6 +308,7 @@
             Name = "frmAddUpdateLocalDrivingLicesnseApplication";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmAddUpdateLocalDrivingLicesnseApplication";
+            Load += frmAddUpdateLocalDrivingLicesnseApplication_Load;
             tcApplicationInfo.ResumeLayout(false);
             tpPersonalInfo.ResumeLayout(false);
             tpApplicationInfo.ResumeLayout(false);

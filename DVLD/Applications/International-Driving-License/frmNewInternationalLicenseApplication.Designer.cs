@@ -337,7 +337,8 @@
             // 
             // btnClose
             // 
-            btnClose.BackColor = Color.FromArgb(255, 59, 48);
+            btnClose.BackColor = Color.FromArgb(192, 0, 0);
+            btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnClose.ForeColor = Color.White;
             btnClose.ImageAlign = ContentAlignment.MiddleRight;
@@ -352,6 +353,7 @@
             // btnIssueLicense
             // 
             btnIssueLicense.BackColor = Color.FromArgb(0, 0, 192);
+            btnIssueLicense.FlatStyle = FlatStyle.Flat;
             btnIssueLicense.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnIssueLicense.ForeColor = Color.White;
             btnIssueLicense.ImageAlign = ContentAlignment.MiddleRight;

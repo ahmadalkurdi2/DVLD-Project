@@ -57,11 +57,12 @@
             // 
             // btnClose
             // 
-            btnClose.BackColor = Color.DarkRed;
+            btnClose.BackColor = Color.FromArgb(192, 0, 0);
+            btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnClose.ForeColor = Color.White;
             btnClose.ImageAlign = ContentAlignment.MiddleRight;
-            btnClose.Location = new Point(683, 598);
+            btnClose.Location = new Point(682, 599);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(162, 40);
             btnClose.TabIndex = 51;
@@ -72,10 +73,11 @@
             // btnSave1
             // 
             btnSave1.BackColor = Color.Green;
+            btnSave1.FlatStyle = FlatStyle.Flat;
             btnSave1.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSave1.ForeColor = Color.White;
             btnSave1.ImageAlign = ContentAlignment.MiddleRight;
-            btnSave1.Location = new Point(851, 598);
+            btnSave1.Location = new Point(850, 599);
             btnSave1.Name = "btnSave1";
             btnSave1.Size = new Size(162, 40);
             btnSave1.TabIndex = 52;
