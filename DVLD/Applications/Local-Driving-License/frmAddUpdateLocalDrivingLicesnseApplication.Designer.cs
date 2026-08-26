@@ -32,6 +32,7 @@
             lblTitle = new Label();
             tcApplicationInfo = new TabControl();
             tpPersonalInfo = new TabPage();
+            btnNext = new Button();
             ctrlPersonCardWithFilter1 = new DVLD.People.Controls.ctrlPersonCardWithFilter();
             tpApplicationInfo = new TabPage();
             cbLicenseClass = new ComboBox();
@@ -85,6 +86,7 @@
             // 
             // tpPersonalInfo
             // 
+            tpPersonalInfo.Controls.Add(btnNext);
             tpPersonalInfo.Controls.Add(ctrlPersonCardWithFilter1);
             tpPersonalInfo.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             tpPersonalInfo.Location = new Point(4, 36);
@@ -95,6 +97,21 @@
             tpPersonalInfo.Text = "Personal Info";
             tpPersonalInfo.UseVisualStyleBackColor = true;
             // 
+            // btnNext
+            // 
+            btnNext.BackColor = Color.Navy;
+            btnNext.FlatStyle = FlatStyle.Flat;
+            btnNext.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnNext.ForeColor = Color.White;
+            btnNext.ImageAlign = ContentAlignment.MiddleRight;
+            btnNext.Location = new Point(810, 408);
+            btnNext.Name = "btnNext";
+            btnNext.Size = new Size(151, 40);
+            btnNext.TabIndex = 51;
+            btnNext.Text = "Next";
+            btnNext.UseVisualStyleBackColor = false;
+            btnNext.Click += btnNext_Click;
+            // 
             // ctrlPersonCardWithFilter1
             // 
             ctrlPersonCardWithFilter1.Location = new Point(39, 9);
@@ -102,6 +119,7 @@
             ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
             ctrlPersonCardWithFilter1.Size = new Size(1457, 773);
             ctrlPersonCardWithFilter1.TabIndex = 0;
+            ctrlPersonCardWithFilter1.OnPersonSelected += ctrlPersonCardWithFilter1_OnPersonSelected;
             // 
             // tpApplicationInfo
             // 
@@ -294,6 +312,7 @@
             btnSave1.TabIndex = 50;
             btnSave1.Text = "Save";
             btnSave1.UseVisualStyleBackColor = false;
+            btnSave1.Click += btnSave1_Click;
             // 
             // frmAddUpdateLocalDrivingLicesnseApplication
             // 
@@ -308,6 +327,7 @@
             Name = "frmAddUpdateLocalDrivingLicesnseApplication";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmAddUpdateLocalDrivingLicesnseApplication";
+            Activated += frmAddUpdateLocalDrivingLicesnseApplication_Activated;
             Load += frmAddUpdateLocalDrivingLicesnseApplication_Load;
             tcApplicationInfo.ResumeLayout(false);
             tpPersonalInfo.ResumeLayout(false);
@@ -346,5 +366,6 @@
         private Label label6;
         private Button btnClose;
         private Button btnSave1;
+        private Button btnNext;
     }
 }

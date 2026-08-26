@@ -86,9 +86,15 @@ namespace DVLD_Business
 
         private bool _AddNewApplication()
         {
-            return clsApplicationData.AddNewApplication(this.ApplicantPersonID, this.ApplicationDate,
+            int newId = clsApplicationData.AddNewApplication(this.ApplicantPersonID, this.ApplicationDate,
                 this.ApplicationTypeID, (byte)this.ApplicationStatus,
-                this.LastStatusDate, this.PaidFees, this.CreatedByUserID) != -1;
+                this.LastStatusDate, this.PaidFees, this.CreatedByUserID);
+            if (newId != -1)
+            {
+                this.ApplicationID = newId;
+                return true;
+            }
+            return false;
         }
         private bool _UpdateApplication()
         {

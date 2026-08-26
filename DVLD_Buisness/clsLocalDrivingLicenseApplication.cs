@@ -20,7 +20,8 @@ namespace DVLD_Business
         {
             get
             {
-                return clsPerson.Find(ApplicantPersonID).FullName;
+                return base.PersonInfo.FullName;
+                //return clsPerson.Find(ApplicantPersonID).FullName;
             }
         }
         public clsLocalDrivingLicenseApplication()
@@ -50,7 +51,13 @@ namespace DVLD_Business
 
         private bool _AddNewLocalDrivingLicenseApplication()
         {
-            return clsLocalDrivingLicenseApplicationData.AddNewLocalDrivingLicenseApplication(this.ApplicationID, this.LicenseClassID) != -1;
+            int newId = clsLocalDrivingLicenseApplicationData.AddNewLocalDrivingLicenseApplication(this.ApplicationID, this.LicenseClassID);
+            if (newId != -1)
+            {
+                this.LocalDrivingLicenseApplicationID = newId;
+                return true;
+            }
+            return false;
         }
         private bool _UpdateLocalDrivingLicenseApplication()
         {
@@ -207,7 +214,7 @@ namespace DVLD_Business
             return clsTest.PassedAllTests(LocalDrivingLicenseApplicationID);
         }
 
-        public int IssueLicenseForTheFirtTime(string Notes, int CreatedByUserID)
+        public int IssueLicenseForTheFirstTime(string Notes, int CreatedByUserID)
         {
             int DriverID = -1;
             clsDriver Driver = clsDriver.FindByPersonID(this.ApplicantPersonID);

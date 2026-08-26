@@ -89,7 +89,9 @@ namespace DVLD_DataAccess
 
             Connection.Open();
             object Result = Command.ExecuteScalar();
-            return Result == DBNull.Value ? -1 : Convert.ToInt32(Result);
+            if (Result == null || Result == DBNull.Value)
+                return -1;
+            return Convert.ToInt32(Result);
         }
 
         public static bool UpdateLocalDrivingLicenseApplication(int LocalDrivingLicenseApplicationID, int ApplicationID, int LicenseClassID)

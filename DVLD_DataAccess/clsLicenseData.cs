@@ -184,7 +184,9 @@ namespace DVLD_DataAccess
             Command.Parameters.AddWithValue("@LicenseClass", LicenseClassID);
             Connection.Open();
             object result = Command.ExecuteScalar();
-            return result == DBNull.Value ? -1 : Convert.ToInt32(result);
+            if (result == null || result == DBNull.Value)
+                return -1;
+            return Convert.ToInt32(result);
         }
 
         public static bool DeactivateLicense(int LicenseID)
