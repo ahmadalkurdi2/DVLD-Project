@@ -103,5 +103,11 @@ namespace DVLD
             frmListTestTypes frm = new frmListTestTypes();
             frm.ShowDialog();
         }
+
+        private void localDrivingLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListLocalDrivingLicesnseApplications frm = new frmListLocalDrivingLicesnseApplications();
+            frm.ShowDialog();
+        }
     }
 }

@@ -29,13 +29,22 @@ namespace DVLD_DataAccess
             using var Reader = Command.ExecuteReader();
             if (Reader.Read())
             {
-                ApplicantPersonID = Reader.GetInt32(0);
-                ApplicationDate = Reader.GetDateTime(1);
-                ApplicationTypeID = Reader.GetInt32(2);
-                ApplicationStatus = Reader.GetByte(3);
-                LastStatusDate = Reader.GetDateTime(4);
-                PaidFees = Reader.GetDecimal(5);
-                CreatedByUserID = Reader.GetInt32(6);
+                int idxApplicant = Reader.GetOrdinal("ApplicantPersonID");
+                int idxApplicationDate = Reader.GetOrdinal("ApplicationDate");
+                int idxApplicationTypeID = Reader.GetOrdinal("ApplicationTypeID");
+                int idxApplicationStatus = Reader.GetOrdinal("ApplicationStatus");
+                int idxLastStatusDate = Reader.GetOrdinal("LastStatusDate");
+                int idxPaidFees = Reader.GetOrdinal("PaidFees");
+                int idxCreatedByUserID = Reader.GetOrdinal("CreatedByUserID");
+
+                if (!Reader.IsDBNull(idxApplicant)) ApplicantPersonID = Reader.GetInt32(idxApplicant);
+                if (!Reader.IsDBNull(idxApplicationDate)) ApplicationDate = Reader.GetDateTime(idxApplicationDate);
+                if (!Reader.IsDBNull(idxApplicationTypeID)) ApplicationTypeID = Reader.GetInt32(idxApplicationTypeID);
+                if (!Reader.IsDBNull(idxApplicationStatus)) ApplicationStatus = Reader.GetByte(idxApplicationStatus);
+                if (!Reader.IsDBNull(idxLastStatusDate)) LastStatusDate = Reader.GetDateTime(idxLastStatusDate);
+                if (!Reader.IsDBNull(idxPaidFees)) PaidFees = Reader.GetDecimal(idxPaidFees);
+                if (!Reader.IsDBNull(idxCreatedByUserID)) CreatedByUserID = Reader.GetInt32(idxCreatedByUserID);
+
                 return true;
             }
             return false;

@@ -127,7 +127,7 @@ namespace DVLD.Applications.Local_Driving_License
         {
             if (!this.ValidateChildren())
             {
-                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Some fields are not valid!, put the mouse over the red icon(s) to see the error", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             int LicenseClassID = -1;
@@ -150,7 +150,7 @@ namespace DVLD.Applications.Local_Driving_License
 
             if (clsLicense.IsLicenseExistByPersonID(personId, LicenseClassID))
             {
-                MessageBox.Show("Person already have a license with the same applied driving class, Choose diffrent driving class", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Person already have a license with the same applied driving class, Choose different driving class", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             // Use the selected person (either previously selected or from the control)

@@ -18,7 +18,7 @@ namespace DVLD_DataAccess
             DefaultValidityLength = 0;
             ClassFees = 0;
 
-            string Query = "SELECT * FROM LicenseClasses WHERE LicenseClassID = @LicenseClassID";
+            string Query = "SELECT ClassName, ClassDescription, MinimumAllowedAge, DefaultValidityLength, ClassFees FROM LicenseClasses WHERE LicenseClassID = @LicenseClassID";
             using var Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             using var Command = new SqlCommand(Query, Connection);
             Command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
@@ -27,11 +27,11 @@ namespace DVLD_DataAccess
             using var Reader = Command.ExecuteReader();
             if(Reader.Read())
             {
-                ClassName = Reader.GetString(0);
-                ClassDescription = Reader.GetString(1);
-                MinimumAllowedAge = Reader.GetByte(2);
-                DefaultValidityLength = Reader.GetByte(3);
-                ClassFees = Reader.GetDecimal(4);
+                ClassName = Reader.IsDBNull(0) ? string.Empty : Reader.GetString(0);
+                ClassDescription = Reader.IsDBNull(1) ? string.Empty : Reader.GetString(1);
+                MinimumAllowedAge = Reader.IsDBNull(2) ? (byte)0 : Reader.GetByte(2);
+                DefaultValidityLength = Reader.IsDBNull(3) ? (byte)0 : Reader.GetByte(3);
+                ClassFees = Reader.IsDBNull(4) ? 0m : Reader.GetDecimal(4);
                 return true;
             }
             return false;
