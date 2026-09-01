@@ -4,8 +4,14 @@ using System.Text;
 
 namespace DVLD_DataAccess
 {
-    internal class clsDataAccessSettings
+    internal static class clsDataAccessSettings
     {
-        public static string ConnectionString = "Server=.;Database=DVLD;User Id=sa;Password=123456;TrustServerCertificate=True;";
+        public static string ConnectionString
+        {
+            get
+            {
+                return "Server=.;Database=DVLD;Integrated Security=True;TrustServerCertificate=True;";
+            }
+        }
     }
 }
