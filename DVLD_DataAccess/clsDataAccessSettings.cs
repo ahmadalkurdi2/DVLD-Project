@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Configuration;
 
 namespace DVLD_DataAccess
 {
@@ -10,7 +8,8 @@ namespace DVLD_DataAccess
         {
             get
             {
-                return "Server=.;Database=DVLD;Integrated Security=True;TrustServerCertificate=True;";
+                // Notice the full "System.Configuration." prefix to avoid conflicts
+                return System.Configuration.ConfigurationManager.ConnectionStrings["DVLDConnection"].ConnectionString;
             }
         }
     }
