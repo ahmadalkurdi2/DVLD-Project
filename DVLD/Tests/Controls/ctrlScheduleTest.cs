@@ -250,5 +250,10 @@ namespace DVLD.Tests
             else
                 MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        private void gbTestType_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -34,13 +34,13 @@
             ctrlDrivingLicenseApplicationInfo1 = new DVLD.Applications.ctrlDrivingLicenseApplicationInfo();
             label1 = new Label();
             dgvLicenseTestAppointments = new DataGridView();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            editToolStripMenuItem = new ToolStripMenuItem();
+            takeTestToolStripMenuItem = new ToolStripMenuItem();
             label2 = new Label();
             btnClose = new Button();
             btnAddNewAppointment = new Button();
             lblRecordsCount = new Label();
-            contextMenuStrip1 = new ContextMenuStrip(components);
-            editToolStripMenuItem = new ToolStripMenuItem();
-            takeTestToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)pbTestTypeImage).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvLicenseTestAppointments).BeginInit();
             contextMenuStrip1.SuspendLayout();
@@ -97,6 +97,30 @@
             dgvLicenseTestAppointments.Size = new Size(1090, 150);
             dgvLicenseTestAppointments.TabIndex = 7;
             // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { editToolStripMenuItem, takeTestToolStripMenuItem });
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(139, 80);
+            // 
+            // editToolStripMenuItem
+            // 
+            editToolStripMenuItem.Image = Properties.Resources.edit_32;
+            editToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
+            editToolStripMenuItem.Name = "editToolStripMenuItem";
+            editToolStripMenuItem.Size = new Size(138, 38);
+            editToolStripMenuItem.Text = "Edit";
+            editToolStripMenuItem.Click += editToolStripMenuItem_Click;
+            // 
+            // takeTestToolStripMenuItem
+            // 
+            takeTestToolStripMenuItem.Image = Properties.Resources.Test_32;
+            takeTestToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
+            takeTestToolStripMenuItem.Name = "takeTestToolStripMenuItem";
+            takeTestToolStripMenuItem.Size = new Size(138, 38);
+            takeTestToolStripMenuItem.Text = "Take Test";
+            takeTestToolStripMenuItem.Click += takeTestToolStripMenuItem_Click;
+            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -143,30 +167,6 @@
             lblRecordsCount.TabIndex = 52;
             lblRecordsCount.Text = "???";
             // 
-            // contextMenuStrip1
-            // 
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { editToolStripMenuItem, takeTestToolStripMenuItem });
-            contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(139, 80);
-            // 
-            // editToolStripMenuItem
-            // 
-            editToolStripMenuItem.Image = Properties.Resources.edit_32;
-            editToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
-            editToolStripMenuItem.Name = "editToolStripMenuItem";
-            editToolStripMenuItem.Size = new Size(138, 38);
-            editToolStripMenuItem.Text = "Edit";
-            editToolStripMenuItem.Click += editToolStripMenuItem_Click;
-            // 
-            // takeTestToolStripMenuItem
-            // 
-            takeTestToolStripMenuItem.Image = Properties.Resources.Test_32;
-            takeTestToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
-            takeTestToolStripMenuItem.Name = "takeTestToolStripMenuItem";
-            takeTestToolStripMenuItem.Size = new Size(138, 38);
-            takeTestToolStripMenuItem.Text = "Take Test";
-            takeTestToolStripMenuItem.Click += takeTestToolStripMenuItem_Click;
-            // 
             // frmListTestAppointments
             // 
             AutoScaleDimensions = new SizeF(10F, 23F);
@@ -184,6 +184,7 @@
             Font = new Font("Comic Sans MS", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(4, 5, 4, 5);
             Name = "frmListTestAppointments";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmListTestAppointments";
             Load += frmListTestAppointments_Load;
             ((System.ComponentModel.ISupportInitialize)pbTestTypeImage).EndInit();

@@ -8,8 +8,8 @@ namespace DVLD_Business
 {
     public class clsTest
     {
-        public enum enMode { AddNew, Update };
-        public enMode Mode = enMode.AddNew;
+        enum enMode { AddNew, Update };
+        enMode Mode = enMode.AddNew;
 
         public int TestID { set; get; }
         public int TestAppointmentID { set; get; }
@@ -58,12 +58,9 @@ namespace DVLD_Business
             bool TestResult = false; string Notes = string.Empty;
             int CreatedByUserID = -1;
 
-            if (clsTestData.GetTestInfoByID(TestID,
-            out TestAppointmentID, out TestResult,
+            if (clsTestData.GetTestInfoByID(TestID, out TestAppointmentID, out TestResult,
             out Notes, out CreatedByUserID))
-                return new clsTest(TestID,
-                        TestAppointmentID, TestResult,
-                        Notes, CreatedByUserID);
+                return new clsTest(TestID, TestAppointmentID, TestResult, Notes, CreatedByUserID);
             else
                 return null;
         }

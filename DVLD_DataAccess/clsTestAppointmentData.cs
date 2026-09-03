@@ -20,7 +20,7 @@ namespace DVLD_DataAccess
             IsLocked = false;
             RetakeTestApplicationID = 0;
 
-            string Query = "SELECT * FROM TestAppointments WHERE TestAppointmentID = @TestAppointmentID";
+            string Query = "SELECT TestTypeID, LocalDrivingLicenseApplicationID, AppointmentDate, CreatedByUserID, PaidFees, IsLocked, RetakeTestApplicationID FROM TestAppointments WHERE TestAppointmentID = @TestAppointmentID";
             using var Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             using var Command = new SqlCommand(Query, Connection);
             Command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);

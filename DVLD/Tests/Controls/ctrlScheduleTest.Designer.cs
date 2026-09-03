@@ -108,6 +108,7 @@
             gbTestType.TabIndex = 0;
             gbTestType.TabStop = false;
             gbTestType.Text = "Test Types";
+            gbTestType.Enter += gbTestType_Enter;
             // 
             // btnSave
             // 
