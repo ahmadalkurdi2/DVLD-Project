@@ -57,6 +57,7 @@ namespace DVLD.NewFolder
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
+            txtPassword.UseSystemPasswordChar = true;
             string UserName = string.Empty, Password = string.Empty;
             if (clsGlobal.GetStoredCredential(ref UserName, ref Password))
             {
@@ -69,6 +70,11 @@ namespace DVLD.NewFolder
         }
 
         private void chkRememberMe_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
         {
 
         }
