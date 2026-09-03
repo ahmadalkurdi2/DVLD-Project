@@ -156,8 +156,8 @@ namespace DVLD_DataAccess
             using var Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             using var Command = new SqlCommand(Query, Connection);
 
-            Command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
-            Command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+            Command.Parameters.AddWithValue("@AppID", LocalDrivingLicenseApplicationID);
+            Command.Parameters.AddWithValue("@TypeID", TestTypeID);
             Connection.Open();
             object result = Command.ExecuteScalar();
             return result != null;

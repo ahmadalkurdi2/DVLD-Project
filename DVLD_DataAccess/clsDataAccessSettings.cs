@@ -2,7 +2,7 @@
 
 namespace DVLD_DataAccess
 {
-    internal static class DataAccessSettings
+    internal static class clsDataAccessSettings
     {
         public static string ConnectionString
         {

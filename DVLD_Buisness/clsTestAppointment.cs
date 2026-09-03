@@ -126,5 +126,23 @@ namespace DVLD_Business
         {
             return clsTestAppointmentData.GetTestID(TestAppointmentID);
         }
+
+        public static DataTable GetAllTestAppointments()
+        {
+            return clsTestAppointmentData.GetAllTestAppointments();
+
+        }
+
+        public DataTable GetApplicationTestAppointmentsPerTestType(clsTestType.enTestType TestTypeID)
+        {
+            return clsTestAppointmentData.GetApplicationTestAppointmentsPerTestType(this.LocalDrivingLicenseApplicationID, (int)TestTypeID);
+
+        }
+
+        public static DataTable GetApplicationTestAppointmentsPerTestType(int LocalDrivingLicenseApplicationID, clsTestType.enTestType TestTypeID)
+        {
+            return clsTestAppointmentData.GetApplicationTestAppointmentsPerTestType(LocalDrivingLicenseApplicationID, (int)TestTypeID);
+
+        }
     }
 }

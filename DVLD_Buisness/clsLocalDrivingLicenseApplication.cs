@@ -20,8 +20,7 @@ namespace DVLD_Business
         {
             get
             {
-                return base.PersonInfo.FullName;
-                //return clsPerson.Find(ApplicantPersonID).FullName;
+                return base.PersonInfo != null ? base.PersonInfo.FullName : clsPerson.Find(ApplicantPersonID)?.FullName ?? "Unknown";
             }
         }
         public clsLocalDrivingLicenseApplication()

@@ -1,4 +1,5 @@
-﻿using DVLD_Business;
+﻿using DVLD.Tests;
+using DVLD_Business;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -168,24 +169,24 @@ namespace DVLD.Applications.Local_Driving_License
         private void _ScheduleTest(clsTestType.enTestType TestType)
         {
             int LocalDrivingLicenseApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
-            MessageBox.Show("Not implemented yet");
+            frmListTestAppointments frm = new frmListTestAppointments(LocalDrivingLicenseApplicationID, TestType);
+            frm.ShowDialog();
         }
 
         private void scheduleVisionTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not implemented yet");
+            _ScheduleTest(clsTestType.enTestType.VisionTest);
         }
 
         private void scheduleWrittenTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not implemented yet");
+            _ScheduleTest(clsTestType.enTestType.WrittenTest);
 
         }
 
         private void scheduleStreetTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not implemented yet");
-
+            _ScheduleTest(clsTestType.enTestType.StreetTest);
         }
 
         private void btnAddNewApplication_Click(object sender, EventArgs e)
@@ -319,7 +320,7 @@ namespace DVLD.Applications.Local_Driving_License
         {
             if (dgvLocalDrivingLicenseApplications.CurrentRow == null)
             {
-                MessageBox.Show("Please select an application first.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select an application first_ScheduleTest.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             int LocalDrivingLicenseApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
