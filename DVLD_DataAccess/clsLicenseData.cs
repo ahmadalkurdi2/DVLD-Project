@@ -168,12 +168,8 @@ namespace DVLD_DataAccess
 
         public static int GetActiveLicenseIDByPersonID(int PersonID, int LicenseClassID)
         {
-            string Query = @"SELECT        Licenses.LicenseID
-                            FROM Licenses INNER JOIN
-                                                     Drivers ON Licenses.DriverID = Drivers.DriverID
-                            WHERE  
-                             
-                             Licenses.LicenseClass = @LicenseClass 
+            string Query = @"SELECT Licenses.LicenseID FROM Licenses INNER JOIN Drivers ON Licenses.DriverID = Drivers.DriverID
+                            WHERE Licenses.LicenseClass = @LicenseClass 
                               AND Drivers.PersonID = @PersonID
                               And IsActive=1;";
 

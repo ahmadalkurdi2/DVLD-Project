@@ -35,10 +35,10 @@
             // ctrlDrivingLicenseApplicationInfo1
             // 
             ctrlDrivingLicenseApplicationInfo1.Font = new Font("Comic Sans MS", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ctrlDrivingLicenseApplicationInfo1.Location = new Point(-5, 14);
+            ctrlDrivingLicenseApplicationInfo1.Location = new Point(13, 5);
             ctrlDrivingLicenseApplicationInfo1.Margin = new Padding(4, 5, 4, 5);
             ctrlDrivingLicenseApplicationInfo1.Name = "ctrlDrivingLicenseApplicationInfo1";
-            ctrlDrivingLicenseApplicationInfo1.Size = new Size(1106, 483);
+            ctrlDrivingLicenseApplicationInfo1.Size = new Size(792, 407);
             ctrlDrivingLicenseApplicationInfo1.TabIndex = 0;
             // 
             // btnClose
@@ -48,9 +48,9 @@
             btnClose.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnClose.ForeColor = Color.White;
             btnClose.ImageAlign = ContentAlignment.MiddleRight;
-            btnClose.Location = new Point(944, 520);
+            btnClose.Location = new Point(619, 406);
             btnClose.Name = "btnClose";
-            btnClose.Size = new Size(128, 40);
+            btnClose.Size = new Size(164, 40);
             btnClose.TabIndex = 49;
             btnClose.Text = "Close";
             btnClose.UseVisualStyleBackColor = false;
@@ -60,7 +60,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1141, 572);
+            ClientSize = new Size(813, 478);
             Controls.Add(btnClose);
             Controls.Add(ctrlDrivingLicenseApplicationInfo1);
             Name = "frmLocalDrivingLicenseApplicationInfo";

@@ -22,16 +22,7 @@ namespace DVLD_Business
             Mode = enMode.AddNew;
         }
 
-        private clsPerson _PersonInfo;
-        public clsPerson PersonInfo
-        {
-            get
-            {
-                if (_PersonInfo == null && PersonID != -1)
-                    _PersonInfo = clsPerson.Find(PersonID);
-                return _PersonInfo;
-            }
-        }
+        public clsPerson PersonInfo;
 
         public clsDriver(int DriverID, int PersonID, int CreatedByUserID, DateTime CreatedDate)
         {

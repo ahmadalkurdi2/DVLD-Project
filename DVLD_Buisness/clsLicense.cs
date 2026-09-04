@@ -7,8 +7,8 @@ namespace DVLD_Business
 {
     public class clsLicense
     {
-        public enum enMode { AddNew, Update };
-        public enMode Mode { get; private set; }
+        enum enMode { AddNew, Update };
+        enMode Mode { get; set; }
         public enum enIssueReason { FirstTime = 1, Renew, DamagedReplacement, LostReplacement };
         public clsDriver DriverInfo;
         public int LicenseID { set; get; }
@@ -163,11 +163,11 @@ namespace DVLD_Business
         {
             return this.ExpirationDate < DateTime.Now;
         }
-        public bool DeactivateCurrentLicens()
+        public bool DeactivateCurrentLicense()
         {
             return clsLicenseData.DeactivateLicense(this.LicenseID);
         }
 
-        
+
     }
 }

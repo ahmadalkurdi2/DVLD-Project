@@ -71,7 +71,12 @@ namespace DVLD.Applications
 
         private void llShowLicenceInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            
+
+        }
+
+        private void lblPassedTests_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
