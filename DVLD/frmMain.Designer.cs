@@ -147,6 +147,7 @@
             retakeTestToolStripMenuItem.Name = "retakeTestToolStripMenuItem";
             retakeTestToolStripMenuItem.Size = new Size(490, 38);
             retakeTestToolStripMenuItem.Text = "Retake Test";
+            retakeTestToolStripMenuItem.Click += retakeTestToolStripMenuItem_Click;
             // 
             // renewDrivingLicenseToolStripMenuItem
             // 

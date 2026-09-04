@@ -189,6 +189,7 @@
             lblTotalFees.Size = new Size(49, 23);
             lblTotalFees.TabIndex = 25;
             lblTotalFees.Text = "[???]";
+            lblTotalFees.Click += lblTotalFees_Click;
             // 
             // label10
             // 

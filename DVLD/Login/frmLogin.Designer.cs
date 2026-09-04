@@ -71,7 +71,6 @@
             splitContainer1.Panel2.Controls.Add(label3);
             splitContainer1.Panel2.Controls.Add(label2);
             splitContainer1.Panel2.Controls.Add(label1);
-            splitContainer1.Panel2.Paint += splitContainer1_Panel2_Paint;
             splitContainer1.Size = new Size(932, 483);
             splitContainer1.SplitterDistance = 377;
             splitContainer1.SplitterWidth = 6;
@@ -123,7 +122,6 @@
             chkRememberMe.TabIndex = 28;
             chkRememberMe.Text = "Remember Me";
             chkRememberMe.UseVisualStyleBackColor = true;
-            chkRememberMe.CheckedChanged += chkRememberMe_CheckedChanged;
             // 
             // txtPassword
             // 
@@ -131,7 +129,6 @@
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(245, 30);
             txtPassword.TabIndex = 27;
-            txtPassword.TextChanged += txtPassword_TextChanged;
             // 
             // txtUserName
             // 

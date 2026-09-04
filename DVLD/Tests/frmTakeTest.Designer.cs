@@ -59,7 +59,6 @@
             pictureBox2.SizeMode = PictureBoxSizeMode.AutoSize;
             pictureBox2.TabIndex = 30;
             pictureBox2.TabStop = false;
-            pictureBox2.Click += pictureBox2_Click;
             // 
             // label1
             // 
@@ -94,7 +93,6 @@
             rbFail.TabStop = true;
             rbFail.Text = "Fail";
             rbFail.UseVisualStyleBackColor = true;
-            rbFail.CheckedChanged += rbFail_CheckedChanged;
             // 
             // lblUserMessage
             // 
@@ -138,6 +136,7 @@
             btnSave.TabIndex = 36;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
             // btnClose
             // 
@@ -152,6 +151,7 @@
             btnClose.TabIndex = 51;
             btnClose.Text = "Close";
             btnClose.UseVisualStyleBackColor = false;
+            btnClose.Click += btnClose_Click;
             // 
             // pictureBox1
             // 
@@ -180,7 +180,9 @@
             Controls.Add(label1);
             Controls.Add(ctrlScheduledTest1);
             Name = "frmTakeTest";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmTakeTest";
+            Load += frmTakeTest_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

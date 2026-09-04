@@ -98,7 +98,7 @@ namespace DVLD.Tests
             else
                 if (!_LoadTestAppointmentData())
                     return;
-            lblTotalFees.Text = Convert.ToSingle(lblFees.Text) + Convert.ToSingle(lblRetakeAppFees.Text).ToString();
+            lblTotalFees.Text = (Convert.ToSingle(lblFees.Text) + Convert.ToSingle(lblRetakeAppFees.Text)).ToString();
             if (!_HandleActiveTestAppointmentConstraint())
                 return;
             if (!_HandleAppointmentLockedConstraint())
@@ -252,6 +252,11 @@ namespace DVLD.Tests
         }
 
         private void gbTestType_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTotalFees_Click(object sender, EventArgs e)
         {
 
         }

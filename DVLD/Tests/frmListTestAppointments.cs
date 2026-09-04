@@ -111,7 +111,9 @@ namespace DVLD.Tests
         private void takeTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int TestAppointmentID = (int)dgvLicenseTestAppointments.CurrentRow.Cells[0].Value;
-            MessageBox.Show("Not implemented yet");
+            frmTakeTest frm = new frmTakeTest(TestAppointmentID, _TestType);
+            frm.ShowDialog();
+            frmListTestAppointments_Load(null, null);
         }
     }
 }

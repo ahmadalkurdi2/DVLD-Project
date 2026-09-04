@@ -50,11 +50,6 @@ namespace DVLD.NewFolder
             }
         }
 
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void frmLogin_Load(object sender, EventArgs e)
         {
             txtPassword.UseSystemPasswordChar = true;
@@ -67,16 +62,6 @@ namespace DVLD.NewFolder
             }
             else
                 chkRememberMe.Checked = false;
-        }
-
-        private void chkRememberMe_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtPassword_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
