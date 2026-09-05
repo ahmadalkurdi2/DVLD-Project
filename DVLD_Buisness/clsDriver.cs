@@ -1,4 +1,4 @@
-﻿using DVLD_DataAccess;
+using DVLD_DataAccess;
 using System;
 using System.Data;
 
@@ -35,7 +35,8 @@ namespace DVLD_Business
 
         private bool _AddNewDriver()
         {
-            return clsDriverData.AddNewDriver(PersonID, CreatedByUserID, CreatedDate) != -1;
+            this.DriverID = clsDriverData.AddNewDriver(PersonID, CreatedByUserID, CreatedDate);
+            return (this.DriverID != -1);
         }
         private bool _UpdateDriver()
         {

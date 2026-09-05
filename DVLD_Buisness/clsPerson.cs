@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
@@ -78,10 +78,11 @@ namespace DVLD_Business
         }
         private bool _AddNewPerson()
         {
-            return clsPersonData.AddNewPerson(this.FirstName, this.SecondName, this.ThirdName,
+            this.PersonID = clsPersonData.AddNewPerson(this.FirstName, this.SecondName, this.ThirdName,
                 this.LastName, this.NationalNo,
                 this.DateOfBirth, this.Gendor, this.Address, this.Phone, this.Email,
-                this.NationalityCountryID, this.ImagePath) != -1;
+                this.NationalityCountryID, this.ImagePath);
+            return (this.PersonID != -1);
         }
         private bool _UpdatePerson()
         {

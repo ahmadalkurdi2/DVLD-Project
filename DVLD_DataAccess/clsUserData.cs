@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -40,7 +40,7 @@ namespace DVLD_DataAccess
             UserName = string.Empty;
             Password = string.Empty;
             IsActive = false;
-            string Query = "SELECT * FROM Users WHERE PersonID = @PersonID";
+            string Query = "SELECT UserID, UserName, Password, IsActive FROM Users WHERE PersonID = @PersonID";
             using var Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             using var Command = new SqlCommand(Query, Connection);
             Command.Parameters.AddWithValue("@PersonID", PersonID);

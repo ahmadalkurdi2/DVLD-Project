@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -23,7 +23,7 @@ namespace DVLD_DataAccess
             ReleasedByUserID = 0;
             ReleaseApplicationID = 0;
 
-            string Query = "SELECT * FROM DetainedLicenses WHERE DetainID = @DetainID";
+            string Query = "SELECT LicenseID, DetainDate, FineFees, CreatedByUserID, IsReleased, ReleaseDate, ReleasedByUserID, ReleaseApplicationID FROM DetainedLicenses WHERE DetainID = @DetainID";
             using var Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             using var Command = new SqlCommand(Query, Connection);
             Command.Parameters.AddWithValue("@DetainID", DetainID);
@@ -61,7 +61,7 @@ namespace DVLD_DataAccess
             ReleasedByUserID = 0;
             ReleaseApplicationID = 0;
 
-            string Query = "SELECT top 1 * FROM DetainedLicenses WHERE LicenseID = @LicenseID order by DetainID desc";
+            string Query = "SELECT top 1 DetainID, DetainDate, FineFees, CreatedByUserID, IsReleased, ReleaseDate, ReleasedByUserID, ReleaseApplicationID FROM DetainedLicenses WHERE LicenseID = @LicenseID order by DetainID desc";
             using var Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             using var Command = new SqlCommand(Query, Connection);
             Command.Parameters.AddWithValue("@LicenseID", LicenseID);

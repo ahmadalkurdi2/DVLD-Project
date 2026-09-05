@@ -1,4 +1,4 @@
-﻿using DVLD_DataAccess;
+using DVLD_DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -125,12 +125,16 @@ namespace DVLD_Business
 
         public bool Cancel()
         {
-            return clsApplicationData.UpdateStatus(ApplicationID, 2, LastStatusDate);
+            this.LastStatusDate = DateTime.Now;
+            this.ApplicationStatus = enApplicationStatus.Cancelled;
+            return clsApplicationData.UpdateStatus(ApplicationID, 2, this.LastStatusDate);
         }
 
         public bool SetComplete()
         {
-            return clsApplicationData.UpdateStatus(ApplicationID, 3,LastStatusDate);
+            this.LastStatusDate = DateTime.Now;
+            this.ApplicationStatus = enApplicationStatus.Completed;
+            return clsApplicationData.UpdateStatus(ApplicationID, 3, this.LastStatusDate);
         }
 
         public bool Save()

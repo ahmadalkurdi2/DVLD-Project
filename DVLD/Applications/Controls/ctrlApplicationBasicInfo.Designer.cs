@@ -96,7 +96,7 @@
             groupBox1.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(761, 277);
+            groupBox1.Size = new Size(981, 277);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Application Basic Info";
@@ -344,7 +344,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(groupBox1);
             Name = "ctrlApplicationBasicInfo";
-            Size = new Size(774, 322);
+            Size = new Size(1020, 322);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();

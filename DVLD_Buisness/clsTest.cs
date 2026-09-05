@@ -1,4 +1,4 @@
-﻿using DVLD_DataAccess;
+using DVLD_DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -42,8 +42,9 @@ namespace DVLD_Business
 
         public bool _AddNewTest()
         {
-            return clsTestData.AddNewTest(this.TestAppointmentID,
-                this.TestResult, this.Notes, this.CreatedByUserID) != -1;
+            this.TestID = clsTestData.AddNewTest(this.TestAppointmentID,
+                this.TestResult, this.Notes, this.CreatedByUserID);
+            return (this.TestID != -1);
         }
 
         public bool _UpdateTest()

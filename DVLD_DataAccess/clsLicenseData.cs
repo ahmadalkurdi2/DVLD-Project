@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -23,7 +23,7 @@ namespace DVLD_DataAccess
             IssueReason = 0;
             CreatedByUserID = 0;
 
-            string Query = "SELECT * FROM Licenses WHERE LicenseID = @LicenseID";
+            string Query = "SELECT ApplicationID, DriverID, LicenseClass, IssueDate, ExpirationDate, Notes, PaidFees, IsActive, IssueReason, CreatedByUserID FROM Licenses WHERE LicenseID = @LicenseID";
             using var Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             using var Command = new SqlCommand(Query, Connection);
             Command.Parameters.AddWithValue("@LicenseID", LicenseID);
@@ -38,7 +38,6 @@ namespace DVLD_DataAccess
                 IssueDate = reader.GetDateTime(3);
                 ExpirationDate = reader.GetDateTime(4);
                 Notes = reader.IsDBNull(5) ? string.Empty : reader.GetString(5);
-
                 PaidFees = reader.GetDecimal(6);
                 IsActive = reader.GetBoolean(7);
                 IssueReason = reader.GetByte(8);
@@ -86,10 +85,21 @@ namespace DVLD_DataAccess
             return dt;
         }
 
+        // ==========================================
+        // FIXED AddNewLicense – now validates DriverID
+        // ==========================================
         public static int AddNewLicense(int ApplicationID, int DriverID, int LicenseClass,
              DateTime IssueDate, DateTime ExpirationDate, string Notes,
              decimal PaidFees, bool IsActive, byte IssueReason, int CreatedByUserID)
         {
+            // 1. Check if the DriverID actually exists in the Drivers table
+            if (!_DriverExists(DriverID))
+            {
+                // The caller should ensure a valid driver exists before calling this method.
+                // Return -1 to indicate failure; the caller can then create a driver record.
+                return -1;
+            }
+
             string Query = @"
                               INSERT INTO Licenses
                                (ApplicationID,
@@ -129,7 +139,23 @@ namespace DVLD_DataAccess
 
             Connection.Open();
             object result = Command.ExecuteScalar();
-            return result == DBNull.Value ? -1 : Convert.ToInt32(result);
+            if (result != null && int.TryParse(result.ToString(), out int insertedID))
+            {
+                return insertedID;
+            }
+            return -1;
+        }
+
+        // Helper method to check if a Driver exists
+        private static bool _DriverExists(int DriverID)
+        {
+            string Query = "SELECT COUNT(*) FROM Drivers WHERE DriverID = @DriverID";
+            using var Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            using var Command = new SqlCommand(Query, Connection);
+            Command.Parameters.AddWithValue("@DriverID", DriverID);
+            Connection.Open();
+            int count = (int)Command.ExecuteScalar();
+            return count > 0;
         }
 
         public static bool UpdateLicense(int LicenseID, int ApplicationID, int DriverID, int LicenseClass,

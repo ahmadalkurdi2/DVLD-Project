@@ -1,4 +1,4 @@
-﻿using DVLD_DataAccess;
+using DVLD_DataAccess;
 using Microsoft.Data.SqlClient.DataClassification;
 using System;
 using System.Collections.Generic;
@@ -55,8 +55,9 @@ namespace DVLD_Business
 
         private bool _AddNewTestAppointment()
         {
-            return clsTestAppointmentData.AddNewTestAppointment((int)this.TestTypeID, this.LocalDrivingLicenseApplicationID,
-                this.AppointmentDate, this.PaidFees, this.CreatedByUserID, this.RetakeTestApplicationID) != -1;
+            this.TestAppointmentID = clsTestAppointmentData.AddNewTestAppointment((int)this.TestTypeID, this.LocalDrivingLicenseApplicationID,
+                this.AppointmentDate, this.PaidFees, this.CreatedByUserID, this.RetakeTestApplicationID);
+            return (this.TestAppointmentID != -1);
         }
 
         private bool _UpdateTestAppointment()

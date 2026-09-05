@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -61,8 +61,8 @@ namespace DVLD_DataAccess
             string Query = @"SELECT LocalDrivingLicenseApplicationID, 
                             ClassName, 
                             NationalNo, 
-                            ApplicationDate,
                             FullName,
+                            ApplicationDate,
                             PassedTestCount,
                             Status
                      FROM LocalDrivingLicenseApplications_View
@@ -139,7 +139,7 @@ namespace DVLD_DataAccess
 
             Connection.Open();
             object result = Command.ExecuteScalar();
-            return result != null;
+            return (result != null && result != DBNull.Value && Convert.ToBoolean(result));
         }
 
         public static bool DoesAttendTestType(int LocalDrivingLicenseApplicationID, int TestTypeID)

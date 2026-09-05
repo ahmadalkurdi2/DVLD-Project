@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -87,7 +87,11 @@ namespace DVLD_DataAccess
 
             Connection.Open();
             object result = Command.ExecuteScalar();
-            return result == DBNull.Value ? -1 : Convert.ToInt32(result);
+            if (result != null && int.TryParse(result.ToString(), out int insertedID))
+            {
+                return insertedID;
+            }
+            return -1;
         }
 
         public static bool UpdateDriver(int DriverID, int PersonID, int CreatedByUserID)

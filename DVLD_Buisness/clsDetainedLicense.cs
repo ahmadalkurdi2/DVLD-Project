@@ -1,4 +1,4 @@
-﻿using DVLD_DataAccess;
+using DVLD_DataAccess;
 using System;
 using System.Data;
 
@@ -54,7 +54,8 @@ namespace DVLD_Business
         }
         private bool _AddNewDetainedLicense()
         {
-            return clsDetainedLicenseData.AddNewDetainedLicense(this.LicenseID, this.DetainDate, this.FineFees, this.CreatedByUserID) != -1;
+            this.DetainID = clsDetainedLicenseData.AddNewDetainedLicense(this.LicenseID, this.DetainDate, this.FineFees, this.CreatedByUserID);
+            return (this.DetainID != -1);
         }
 
         private bool _UpdateDetainedLicense()

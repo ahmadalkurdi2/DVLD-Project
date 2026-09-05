@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -51,9 +51,9 @@ namespace DVLD_DataAccess
             IsLocked = false;
             RetakeTestApplicationID = 0;
 
-            string Query = @"SELECT       top 1 *
-                FROM            TestAppointments
-                WHERE        (TestTypeID = @TestTypeID) 
+            string Query = @"SELECT top 1 TestAppointmentID, AppointmentDate, PaidFees, CreatedByUserID, IsLocked, RetakeTestApplicationID
+                FROM TestAppointments
+                WHERE (TestTypeID = @TestTypeID) 
                 AND (LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID) 
                 order by TestAppointmentID Desc";
             using var Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);

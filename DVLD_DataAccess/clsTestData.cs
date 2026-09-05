@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -168,7 +168,7 @@ namespace DVLD_DataAccess
             Command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
             Connection.Open();
             object result = Command.ExecuteScalar();
-            return Convert.ToByte(result);
+            return (result != null && result != DBNull.Value) ? Convert.ToByte(result) : (byte)0;
         }
     }
 }

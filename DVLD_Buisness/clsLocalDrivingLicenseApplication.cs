@@ -1,4 +1,4 @@
-﻿using DVLD_DataAccess;
+using DVLD_DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -208,6 +208,11 @@ namespace DVLD_Business
             return clsTest.GetPassedTestCount(LocalDrivingLicenseApplicationID);
         }
 
+        public bool PassedAllTests()
+        {
+            return clsTest.PassedAllTests(this.LocalDrivingLicenseApplicationID);
+        }
+
         public bool PassedAllTests(int LocalDrivingLicenseApplicationID)
         {
             return clsTest.PassedAllTests(LocalDrivingLicenseApplicationID);
@@ -229,6 +234,9 @@ namespace DVLD_Business
             }
             else
                 DriverID = Driver.DriverID;
+
+            if (this.LicenseClassInfo == null)
+                this.LicenseClassInfo = clsLicenseClass.Find(this.LicenseClassID);
 
             clsLicense License = new clsLicense();
             License.ApplicationID = this.ApplicationID;

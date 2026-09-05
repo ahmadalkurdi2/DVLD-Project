@@ -1,4 +1,4 @@
-﻿using DVLD_DataAccess;
+using DVLD_DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -62,9 +62,10 @@ namespace DVLD_Business
 
         private bool _AddNewInternationalLicense()
         {
-            return clsInternationalLicenseData.AddNewInternationalLicense(this.ApplicationID, this.DriverID, this.IssuedUsingLocalLicenseID,
+            this.InternationalLicenseID = clsInternationalLicenseData.AddNewInternationalLicense(this.ApplicationID, this.DriverID, this.IssuedUsingLocalLicenseID,
                this.IssueDate, this.ExpirationDate,
-               this.IsActive, this.CreatedByUserID) != -1;
+               this.IsActive, this.CreatedByUserID);
+            return (this.InternationalLicenseID != -1);
         }
 
         private bool _UpdateInternationalLicense()

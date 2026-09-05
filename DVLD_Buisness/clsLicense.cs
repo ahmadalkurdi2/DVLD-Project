@@ -1,4 +1,4 @@
-﻿using DVLD_DataAccess;
+using DVLD_DataAccess;
 using System.Data;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
@@ -95,9 +95,10 @@ namespace DVLD_Business
 
         private bool _AddNewLicense()
         {
-            return clsLicenseData.AddNewLicense(this.ApplicationID, this.DriverID, this.LicenseClass,
+            this.LicenseID = clsLicenseData.AddNewLicense(this.ApplicationID, this.DriverID, this.LicenseClass,
                this.IssueDate, this.ExpirationDate, this.Notes, this.PaidFees,
-               this.IsActive, (byte)this.IssueReason, this.CreatedByUserID) != -1;
+               this.IsActive, (byte)this.IssueReason, this.CreatedByUserID);
+            return (this.LicenseID != -1);
         }
         private bool _UpdateLicense()
         {

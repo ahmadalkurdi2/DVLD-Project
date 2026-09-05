@@ -38,6 +38,7 @@
             lblPassedTests = new Label();
             lblAppliedFor = new Label();
             label4 = new Label();
+            label3 = new Label();
             label2 = new Label();
             label1 = new Label();
             ctrlApplicationBasicInfo1 = new ctrlApplicationBasicInfo();
@@ -57,6 +58,7 @@
             groupBox1.Controls.Add(lblPassedTests);
             groupBox1.Controls.Add(lblAppliedFor);
             groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
             groupBox1.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -64,7 +66,7 @@
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(760, 102);
+            groupBox1.Size = new Size(862, 102);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Driving License Application Info";
@@ -152,6 +154,16 @@
             label4.TabIndex = 3;
             label4.Text = "Passed Tests:";
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(265, 57);
+            label3.Name = "label3";
+            label3.Size = new Size(199, 27);
+            label3.TabIndex = 2;
+            label3.Text = "Passed Tests:";
+            label3.Visible = false;
+            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -175,7 +187,7 @@
             ctrlApplicationBasicInfo1.Location = new Point(8, 108);
             ctrlApplicationBasicInfo1.Margin = new Padding(3, 2, 3, 2);
             ctrlApplicationBasicInfo1.Name = "ctrlApplicationBasicInfo1";
-            ctrlApplicationBasicInfo1.Size = new Size(762, 285);
+            ctrlApplicationBasicInfo1.Size = new Size(830, 285);
             ctrlApplicationBasicInfo1.TabIndex = 1;
             // 
             // ctrlDrivingLicenseApplicationInfo
@@ -187,7 +199,7 @@
             Font = new Font("Comic Sans MS", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(4, 3, 4, 3);
             Name = "ctrlDrivingLicenseApplicationInfo";
-            Size = new Size(794, 393);
+            Size = new Size(908, 393);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -200,6 +212,7 @@
 
         private GroupBox groupBox1;
         private Label label4;
+        private Label label3;
         private Label label2;
         private Label label1;
         private Label lblPassedTests;
