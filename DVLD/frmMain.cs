@@ -1,6 +1,7 @@
 using DVLD.Applications.ApplicationTypes;
 using DVLD.Applications.International_Driving_License;
 using DVLD.Applications.Local_Driving_License;
+using DVLD.Applications.Renew_Local_License;
 using DVLD.Global_Classes;
 using DVLD.NewFolder;
 using DVLD.People;
@@ -31,7 +32,8 @@ namespace DVLD
 
         private void renewDrivingLicenseToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            frmRenewLocalDrivingLicenseApplication frm = new frmRenewLocalDrivingLicenseApplication();
+            frm.ShowDialog();
         }
 
         private void manageApplicationTypesToolStripMenuItem_Click(object sender, EventArgs e)

@@ -12,7 +12,7 @@ namespace DVLD.Licenses.Local_Licenses.Controls
     public partial class ctrlDriverLicenseInfoWithFilter : UserControl
     {
         public event Action<int> OnLicenseSelected;
-        protected virtual void PersonSelected(int LicenseID)
+        protected virtual void LicenseSelected(int LicenseID)
         {
             Action<int> handler = OnLicenseSelected;
             if (handler != null)
@@ -66,7 +66,7 @@ namespace DVLD.Licenses.Local_Licenses.Controls
         {
             if (!this.ValidateChildren())
             {
-                MessageBox.Show("Some fileds are not valid!, put the mouse over the red icon(s) to see the erro", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Some fields are not valid!, put the mouse over the red icon(s) to see the error", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtLicenseID.Focus();
                 return;
             }

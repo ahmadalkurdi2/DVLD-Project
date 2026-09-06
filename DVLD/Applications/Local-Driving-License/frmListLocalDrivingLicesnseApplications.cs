@@ -276,7 +276,8 @@ namespace DVLD.Applications.Local_Driving_License
             int LicenseID = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(LocalDrivingLicenseApplicationID).GetActiveLicenseID();
             if (LicenseID != -1)
             {
-                MessageBox.Show("Not implemented yet");
+                frmShowLicenseInfo frm = new frmShowLicenseInfo(LicenseID);
+                frm.ShowDialog();
             }
             else
             {

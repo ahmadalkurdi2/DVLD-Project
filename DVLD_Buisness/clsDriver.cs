@@ -30,6 +30,7 @@ namespace DVLD_Business
             this.PersonID = PersonID;
             this.CreatedByUserID = CreatedByUserID;
             this.CreatedDate = CreatedDate;
+            this.PersonInfo = clsPerson.Find(PersonID);
             Mode = enMode.Update;
         }
 
