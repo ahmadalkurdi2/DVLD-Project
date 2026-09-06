@@ -47,7 +47,7 @@
             gbFilters.Font = new Font("Comic Sans MS", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             gbFilters.Location = new Point(13, 3);
             gbFilters.Name = "gbFilters";
-            gbFilters.Size = new Size(1127, 81);
+            gbFilters.Size = new Size(734, 81);
             gbFilters.TabIndex = 0;
             gbFilters.TabStop = false;
             gbFilters.Text = "Filter";
@@ -58,7 +58,7 @@
             btnFind.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnFind.Image = Properties.Resources.License_View_32;
             btnFind.ImageAlign = ContentAlignment.MiddleRight;
-            btnFind.Location = new Point(954, 21);
+            btnFind.Location = new Point(461, 21);
             btnFind.Name = "btnFind";
             btnFind.Padding = new Padding(0, 0, 14, 0);
             btnFind.Size = new Size(167, 48);
@@ -88,9 +88,9 @@
             // 
             // ctrlDriverLicenseInfo1
             // 
-            ctrlDriverLicenseInfo1.Location = new Point(3, 90);
+            ctrlDriverLicenseInfo1.Location = new Point(-11, 95);
             ctrlDriverLicenseInfo1.Name = "ctrlDriverLicenseInfo1";
-            ctrlDriverLicenseInfo1.Size = new Size(1148, 341);
+            ctrlDriverLicenseInfo1.Size = new Size(1222, 341);
             ctrlDriverLicenseInfo1.TabIndex = 1;
             // 
             // errorProvider1
@@ -104,7 +104,7 @@
             Controls.Add(ctrlDriverLicenseInfo1);
             Controls.Add(gbFilters);
             Name = "ctrlDriverLicenseInfoWithFilter";
-            Size = new Size(1166, 436);
+            Size = new Size(1191, 436);
             gbFilters.ResumeLayout(false);
             gbFilters.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();

@@ -131,7 +131,7 @@
             groupBox1.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(22, 14);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1173, 316);
+            groupBox1.Size = new Size(1200, 316);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Driver License Info";
@@ -139,9 +139,9 @@
             // pbPersonImage
             // 
             pbPersonImage.Image = Properties.Resources.Male_512;
-            pbPersonImage.Location = new Point(993, 94);
+            pbPersonImage.Location = new Point(1061, 94);
             pbPersonImage.Name = "pbPersonImage";
-            pbPersonImage.Size = new Size(156, 128);
+            pbPersonImage.Size = new Size(133, 128);
             pbPersonImage.SizeMode = PictureBoxSizeMode.Zoom;
             pbPersonImage.TabIndex = 53;
             pbPersonImage.TabStop = false;
@@ -543,7 +543,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(groupBox1);
             Name = "ctrlDriverLicenseInfo";
-            Size = new Size(1237, 356);
+            Size = new Size(1263, 356);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbPersonImage).EndInit();

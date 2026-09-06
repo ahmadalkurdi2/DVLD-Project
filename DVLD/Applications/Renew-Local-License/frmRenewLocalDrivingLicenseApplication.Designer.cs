@@ -113,7 +113,7 @@
             // 
             ctrlDriverLicenseInfoWithFilter1.Location = new Point(29, 57);
             ctrlDriverLicenseInfoWithFilter1.Name = "ctrlDriverLicenseInfoWithFilter1";
-            ctrlDriverLicenseInfoWithFilter1.Size = new Size(1193, 426);
+            ctrlDriverLicenseInfoWithFilter1.Size = new Size(1225, 426);
             ctrlDriverLicenseInfoWithFilter1.TabIndex = 14;
             ctrlDriverLicenseInfoWithFilter1.OnLicenseSelected += ctrlDriverLicenseInfoWithFilter1_OnLicenseSelected;
             // 
