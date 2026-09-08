@@ -63,7 +63,7 @@
             btnClose.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnClose.ForeColor = Color.White;
             btnClose.ImageAlign = ContentAlignment.MiddleRight;
-            btnClose.Location = new Point(996, 528);
+            btnClose.Location = new Point(1083, 528);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(151, 40);
             btnClose.TabIndex = 49;
@@ -75,14 +75,14 @@
             // 
             ctrlDriverLicenseInfo1.Location = new Point(12, 178);
             ctrlDriverLicenseInfo1.Name = "ctrlDriverLicenseInfo1";
-            ctrlDriverLicenseInfo1.Size = new Size(1189, 344);
+            ctrlDriverLicenseInfo1.Size = new Size(1253, 344);
             ctrlDriverLicenseInfo1.TabIndex = 50;
             // 
             // frmShowLicenseInfo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1196, 585);
+            ClientSize = new Size(1277, 585);
             Controls.Add(ctrlDriverLicenseInfo1);
             Controls.Add(btnClose);
             Controls.Add(lblTitle);

@@ -2,6 +2,8 @@ using DVLD.Applications.ApplicationTypes;
 using DVLD.Applications.International_Driving_License;
 using DVLD.Applications.Local_Driving_License;
 using DVLD.Applications.Renew_Local_License;
+using DVLD.Applications.Replace_Lost_Or_Damaged_License;
+using DVLD.Drivers;
 using DVLD.Global_Classes;
 using DVLD.NewFolder;
 using DVLD.People;
@@ -115,6 +117,18 @@ namespace DVLD
         private void retakeTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmListLocalDrivingLicesnseApplications frm = new frmListLocalDrivingLicesnseApplications();
+            frm.ShowDialog();
+        }
+
+        private void replacementForLostOrDamagedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReplaceLostOrDamagedLicenseApplication frm = new frmReplaceLostOrDamagedLicenseApplication();
+            frm.ShowDialog();
+        }
+
+        private void driversToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListDrivers frm = new frmListDrivers();
             frm.ShowDialog();
         }
     }

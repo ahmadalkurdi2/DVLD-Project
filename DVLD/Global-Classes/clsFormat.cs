@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DVLD.Global_Classes
 {
@@ -8,7 +6,7 @@ namespace DVLD.Global_Classes
     {
         public static string DateToShort(DateTime date)
         {
-            return date.ToString("dd/mm/yyyy");
+            return date.ToString("dd/MM/yyyy");
         }
     }
 }

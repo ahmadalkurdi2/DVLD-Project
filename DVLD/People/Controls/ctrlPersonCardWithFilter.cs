@@ -69,7 +69,8 @@ namespace DVLD.People.Controls
 
         public void LoadPersonInfo(int PersonID)
         {
-            cbFilterBy.SelectedIndex = 1;
+            // When caller provides an integer PersonID, use the "Person ID" filter (index 0).
+            cbFilterBy.SelectedIndex = 0;
             txtFilterValue.Text = PersonID.ToString();
             FindNow();
         }

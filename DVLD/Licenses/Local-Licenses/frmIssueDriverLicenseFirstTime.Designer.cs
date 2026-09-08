@@ -43,7 +43,7 @@
             ctrlDrivingLicenseApplicationInfo1.Location = new Point(13, 14);
             ctrlDrivingLicenseApplicationInfo1.Margin = new Padding(4, 5, 4, 5);
             ctrlDrivingLicenseApplicationInfo1.Name = "ctrlDrivingLicenseApplicationInfo1";
-            ctrlDrivingLicenseApplicationInfo1.Size = new Size(790, 401);
+            ctrlDrivingLicenseApplicationInfo1.Size = new Size(884, 401);
             ctrlDrivingLicenseApplicationInfo1.TabIndex = 0;
             // 
             // label1
@@ -71,7 +71,7 @@
             txtNotes.Location = new Point(152, 423);
             txtNotes.Multiline = true;
             txtNotes.Name = "txtNotes";
-            txtNotes.Size = new Size(626, 97);
+            txtNotes.Size = new Size(716, 97);
             txtNotes.TabIndex = 51;
             // 
             // btnIssueLicense
@@ -81,7 +81,7 @@
             btnIssueLicense.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnIssueLicense.ForeColor = Color.White;
             btnIssueLicense.ImageAlign = ContentAlignment.MiddleRight;
-            btnIssueLicense.Location = new Point(616, 546);
+            btnIssueLicense.Location = new Point(706, 549);
             btnIssueLicense.Name = "btnIssueLicense";
             btnIssueLicense.Size = new Size(162, 40);
             btnIssueLicense.TabIndex = 53;
@@ -96,7 +96,7 @@
             btnClose.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnClose.ForeColor = Color.White;
             btnClose.ImageAlign = ContentAlignment.MiddleRight;
-            btnClose.Location = new Point(448, 546);
+            btnClose.Location = new Point(538, 549);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(162, 40);
             btnClose.TabIndex = 52;
@@ -108,7 +108,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(805, 610);
+            ClientSize = new Size(910, 610);
             Controls.Add(btnIssueLicense);
             Controls.Add(btnClose);
             Controls.Add(txtNotes);

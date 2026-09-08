@@ -34,8 +34,8 @@ namespace DVLD.People.Controls
             _Person = clsPerson.Find(PersonID);
             if (_Person == null)
             {
+                // No person found: reset UI instead of showing a modal MessageBox.
                 ResetPersonInfo();
-                MessageBox.Show("No Person with PersonID = " + PersonID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             _FillPersonInfo();
@@ -46,8 +46,8 @@ namespace DVLD.People.Controls
             _Person = clsPerson.Find(NationalNo);
             if (_Person == null)
             {
+                // No person found: reset UI instead of showing a modal MessageBox.
                 ResetPersonInfo();
-                MessageBox.Show("No Person with National No. = " + NationalNo.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             _FillPersonInfo();

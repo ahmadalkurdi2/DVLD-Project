@@ -149,7 +149,7 @@
             // pictureBox11
             // 
             pictureBox11.Image = Properties.Resources.Question_32;
-            pictureBox11.Location = new Point(691, 190);
+            pictureBox11.Location = new Point(756, 190);
             pictureBox11.Name = "pictureBox11";
             pictureBox11.Size = new Size(32, 32);
             pictureBox11.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -159,7 +159,7 @@
             // pictureBox10
             // 
             pictureBox10.Image = Properties.Resources.Calendar_32;
-            pictureBox10.Location = new Point(691, 142);
+            pictureBox10.Location = new Point(756, 142);
             pictureBox10.Name = "pictureBox10";
             pictureBox10.Size = new Size(32, 32);
             pictureBox10.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -169,7 +169,7 @@
             // pictureBox14
             // 
             pictureBox14.Image = Properties.Resources.Number_32;
-            pictureBox14.Location = new Point(691, 112);
+            pictureBox14.Location = new Point(756, 112);
             pictureBox14.Name = "pictureBox14";
             pictureBox14.Size = new Size(32, 32);
             pictureBox14.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -200,7 +200,7 @@
             // 
             lblDateOfBirth.AutoSize = true;
             lblDateOfBirth.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDateOfBirth.Location = new Point(757, 71);
+            lblDateOfBirth.Location = new Point(822, 71);
             lblDateOfBirth.Name = "lblDateOfBirth";
             lblDateOfBirth.Size = new Size(70, 27);
             lblDateOfBirth.TabIndex = 47;
@@ -210,7 +210,7 @@
             // 
             lblDriverID.AutoSize = true;
             lblDriverID.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDriverID.Location = new Point(757, 112);
+            lblDriverID.Location = new Point(822, 112);
             lblDriverID.Name = "lblDriverID";
             lblDriverID.Size = new Size(70, 27);
             lblDriverID.TabIndex = 46;
@@ -220,7 +220,7 @@
             // 
             lblExpirationDate.AutoSize = true;
             lblExpirationDate.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblExpirationDate.Location = new Point(757, 147);
+            lblExpirationDate.Location = new Point(822, 147);
             lblExpirationDate.Name = "lblExpirationDate";
             lblExpirationDate.Size = new Size(70, 27);
             lblExpirationDate.TabIndex = 45;
@@ -230,7 +230,7 @@
             // 
             lblIsDetained.AutoSize = true;
             lblIsDetained.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblIsDetained.Location = new Point(757, 185);
+            lblIsDetained.Location = new Point(822, 185);
             lblIsDetained.Name = "lblIsDetained";
             lblIsDetained.Size = new Size(70, 27);
             lblIsDetained.TabIndex = 44;
@@ -240,7 +240,7 @@
             // 
             lblIsActive.AutoSize = true;
             lblIsActive.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblIsActive.Location = new Point(757, 39);
+            lblIsActive.Location = new Point(822, 39);
             lblIsActive.Name = "lblIsActive";
             lblIsActive.Size = new Size(70, 27);
             lblIsActive.TabIndex = 43;
@@ -290,7 +290,7 @@
             // 
             lblIssueDate.AutoSize = true;
             lblIssueDate.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblIssueDate.Location = new Point(757, 232);
+            lblIssueDate.Location = new Point(822, 232);
             lblIssueDate.Name = "lblIssueDate";
             lblIssueDate.Size = new Size(70, 27);
             lblIssueDate.TabIndex = 38;
@@ -330,7 +330,7 @@
             // pictureBox13
             // 
             pictureBox13.Image = Properties.Resources.Question_32;
-            pictureBox13.Location = new Point(691, 39);
+            pictureBox13.Location = new Point(756, 39);
             pictureBox13.Name = "pictureBox13";
             pictureBox13.Size = new Size(32, 32);
             pictureBox13.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -340,7 +340,7 @@
             // pictureBox12
             // 
             pictureBox12.Image = Properties.Resources.Calendar_32;
-            pictureBox12.Location = new Point(691, 71);
+            pictureBox12.Location = new Point(756, 71);
             pictureBox12.Name = "pictureBox12";
             pictureBox12.Size = new Size(32, 32);
             pictureBox12.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -351,7 +351,7 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.Location = new Point(530, 76);
+            label13.Location = new Point(595, 76);
             label13.Name = "label13";
             label13.Size = new Size(152, 27);
             label13.TabIndex = 29;
@@ -361,7 +361,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.Location = new Point(530, 112);
+            label12.Location = new Point(595, 112);
             label12.Name = "label12";
             label12.Size = new Size(109, 27);
             label12.TabIndex = 28;
@@ -371,7 +371,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.Location = new Point(530, 147);
+            label11.Location = new Point(595, 147);
             label11.Name = "label11";
             label11.Size = new Size(165, 27);
             label11.TabIndex = 27;
@@ -381,7 +381,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(530, 190);
+            label10.Location = new Point(595, 190);
             label10.Name = "label10";
             label10.Size = new Size(132, 27);
             label10.TabIndex = 26;
@@ -391,7 +391,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(530, 44);
+            label9.Location = new Point(595, 44);
             label9.Name = "label9";
             label9.Size = new Size(108, 27);
             label9.TabIndex = 25;
@@ -430,7 +430,7 @@
             // pictureBox4
             // 
             pictureBox4.Image = Properties.Resources.Calendar_32;
-            pictureBox4.Location = new Point(691, 232);
+            pictureBox4.Location = new Point(756, 232);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(32, 32);
             pictureBox4.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -451,7 +451,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(530, 232);
+            label8.Location = new Point(595, 232);
             label8.Name = "label8";
             label8.Size = new Size(122, 27);
             label8.TabIndex = 17;

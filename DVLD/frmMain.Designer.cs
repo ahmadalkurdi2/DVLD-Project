@@ -131,6 +131,7 @@
             replacementForLostOrDamagedLicenseToolStripMenuItem.Name = "replacementForLostOrDamagedLicenseToolStripMenuItem";
             replacementForLostOrDamagedLicenseToolStripMenuItem.Size = new Size(490, 38);
             replacementForLostOrDamagedLicenseToolStripMenuItem.Text = "Replacement for Lost or &Damaged License";
+            replacementForLostOrDamagedLicenseToolStripMenuItem.Click += replacementForLostOrDamagedLicenseToolStripMenuItem_Click;
             // 
             // releaseDetainedDrivingLicenseToolStripMenuItem
             // 
@@ -242,6 +243,7 @@
             driversToolStripMenuItem.Name = "driversToolStripMenuItem";
             driversToolStripMenuItem.Size = new Size(154, 75);
             driversToolStripMenuItem.Text = "Drivers";
+            driversToolStripMenuItem.Click += driversToolStripMenuItem_Click;
             // 
             // usersToolStripMenuItem
             // 

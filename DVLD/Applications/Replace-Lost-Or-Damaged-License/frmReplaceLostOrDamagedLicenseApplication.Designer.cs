@@ -398,6 +398,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(1279, 733);
             Controls.Add(groupBox1);
             Controls.Add(gbReplacementFor);
@@ -409,6 +410,7 @@
             Controls.Add(lblTitle);
             Name = "frmReplaceLostOrDamagedLicenseApplication";
             Text = "frmReplaceLostOrDamagedLicenseApplication";
+            WindowState = FormWindowState.Maximized;
             Activated += frmReplaceLostOrDamagedLicenseApplication_Activated;
             Load += frmReplaceLostOrDamagedLicenseApplication_Load;
             gbReplacementFor.ResumeLayout(false);

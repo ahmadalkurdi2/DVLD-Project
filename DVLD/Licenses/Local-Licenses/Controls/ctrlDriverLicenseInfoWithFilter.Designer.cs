@@ -104,7 +104,7 @@
             Controls.Add(ctrlDriverLicenseInfo1);
             Controls.Add(gbFilters);
             Name = "ctrlDriverLicenseInfoWithFilter";
-            Size = new Size(1191, 436);
+            Size = new Size(1251, 436);
             gbFilters.ResumeLayout(false);
             gbFilters.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
