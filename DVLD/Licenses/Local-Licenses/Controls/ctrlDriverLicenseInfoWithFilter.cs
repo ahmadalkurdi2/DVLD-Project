@@ -55,6 +55,11 @@ namespace DVLD.Licenses.Local_Licenses.Controls
                 OnLicenseSelected(_LicenseID);
         }
 
+        public void RefreshLicenseInfo()
+        {
+            ctrlDriverLicenseInfo1.RefreshLicenseInfo();
+        }
+
         private void txtLicenseID_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);

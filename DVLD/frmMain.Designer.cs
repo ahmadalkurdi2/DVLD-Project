@@ -192,6 +192,7 @@
             manageDetainedLicensesToolStripMenuItem.Name = "manageDetainedLicensesToolStripMenuItem";
             manageDetainedLicensesToolStripMenuItem.Size = new Size(344, 38);
             manageDetainedLicensesToolStripMenuItem.Text = "Manage Detained Licenses";
+            manageDetainedLicensesToolStripMenuItem.Click += manageDetainedLicensesToolStripMenuItem_Click;
             // 
             // detainLicenseToolStripMenuItem
             // 
@@ -200,6 +201,7 @@
             detainLicenseToolStripMenuItem.Name = "detainLicenseToolStripMenuItem";
             detainLicenseToolStripMenuItem.Size = new Size(344, 38);
             detainLicenseToolStripMenuItem.Text = "Detain License";
+            detainLicenseToolStripMenuItem.Click += detainLicenseToolStripMenuItem_Click;
             // 
             // releaseDetainedLicenseToolStripMenuItem
             // 
@@ -208,6 +210,7 @@
             releaseDetainedLicenseToolStripMenuItem.Name = "releaseDetainedLicenseToolStripMenuItem";
             releaseDetainedLicenseToolStripMenuItem.Size = new Size(344, 38);
             releaseDetainedLicenseToolStripMenuItem.Text = "Release Detained License";
+            releaseDetainedLicenseToolStripMenuItem.Click += releaseDetainedLicenseToolStripMenuItem_Click;
             // 
             // manageApplicationTypesToolStripMenuItem
             // 

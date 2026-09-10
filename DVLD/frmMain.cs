@@ -1,10 +1,12 @@
 using DVLD.Applications.ApplicationTypes;
 using DVLD.Applications.International_Driving_License;
 using DVLD.Applications.Local_Driving_License;
+using DVLD.Applications.Release_Detained_License;
 using DVLD.Applications.Renew_Local_License;
 using DVLD.Applications.Replace_Lost_Or_Damaged_License;
 using DVLD.Drivers;
 using DVLD.Global_Classes;
+using DVLD.Licenses.Detain_License;
 using DVLD.NewFolder;
 using DVLD.People;
 using DVLD.Tests.Test_Types;
@@ -129,6 +131,24 @@ namespace DVLD
         private void driversToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmListDrivers frm = new frmListDrivers();
+            frm.ShowDialog();
+        }
+
+        private void detainLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDetainLicenseApplication frm = new frmDetainLicenseApplication();
+            frm.ShowDialog();
+        }
+
+        private void releaseDetainedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReleaseDetainedLicenseApplication frm = new frmReleaseDetainedLicenseApplication();
+            frm.ShowDialog();
+        }
+
+        private void manageDetainedLicensesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListDetainedLicenses frm = new frmListDetainedLicenses();
             frm.ShowDialog();
         }
     }

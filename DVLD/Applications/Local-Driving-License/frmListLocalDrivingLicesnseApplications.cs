@@ -1,3 +1,4 @@
+using DVLD.Licenses;
 using DVLD.Licenses.Local_Licenses;
 using DVLD.Tests;
 using DVLD_Business;
@@ -339,11 +340,8 @@ namespace DVLD.Applications.Local_Driving_License
             }
             int LocalDrivingLicenseApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
             clsLocalDrivingLicenseApplication localDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(LocalDrivingLicenseApplicationID);
-            MessageBox.Show("Not implemented yet");
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
+            frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(localDrivingLicenseApplication.ApplicantPersonID);
+            frm.ShowDialog();
         }
 
         private void btnClose_Click_1(object sender, EventArgs e)

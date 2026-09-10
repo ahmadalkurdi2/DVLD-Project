@@ -1,4 +1,5 @@
 using DVLD_DataAccess;
+using Microsoft.Data.SqlClient.DataClassification;
 using System.Data;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
@@ -169,6 +170,21 @@ namespace DVLD_Business
             return clsLicenseData.DeactivateLicense(this.LicenseID);
         }
 
+        public int Detain(sbyte fineFees, int userID)
+        {
+            clsDetainedLicense detainedLicense = new clsDetainedLicense();
+            detainedLicense.LicenseID = this.LicenseID;
+            detainedLicense.DetainDate = DateTime.Now;
+            detainedLicense.FineFees = fineFees;
+            detainedLicense.CreatedByUserID = userID;
+
+            if (detainedLicense.Save())
+            {
+                return detainedLicense.DetainID;
+            }
+            return -1;
+        }
+
         public clsLicense RenewLicense(string Notes,int CreatedByUserID)
         {
             clsApplication Application = new clsApplication();
@@ -231,6 +247,39 @@ namespace DVLD_Business
                 return null;
             DeactivateCurrentLicense();
             return NewLicense;
+        }
+
+        public int Detain(float FineFees,int CreatedByUserID)
+        {
+            clsDetainedLicense detainedLicense = new clsDetainedLicense();
+            detainedLicense.LicenseID = this.LicenseID;
+            detainedLicense.DetainDate = DateTime.Now;
+            detainedLicense.FineFees = Convert.ToSByte(FineFees);
+            detainedLicense.CreatedByUserID = CreatedByUserID;
+            if (!detainedLicense.Save())
+                return -1;
+            return detainedLicense.DetainID;
+        }
+
+        public bool ReleaseDetainedLicense(int ReleasedByUserID,ref int ApplicationID)
+        {
+            clsApplication Application = new clsApplication();
+            Application.ApplicantPersonID = this.DriverInfo.PersonID;
+            Application.ApplicationDate = DateTime.Now;
+            Application.ApplicationTypeID = (int)clsApplication.enApplicationType.ReleaseDetainedDrivingLicsense;
+            Application.LastStatusDate = DateTime.Now;
+            Application.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
+            Application.PaidFees = clsApplicationType.Find((int)clsApplication.enApplicationType.ReleaseDetainedDrivingLicsense).Fees;
+            Application.CreatedByUserID = ReleasedByUserID;
+            
+            if(!Application.Save())
+            {
+                ApplicationID = -1;
+                return false;
+            }
+            ApplicationID = Application.ApplicationID;
+            return this.DetainedInfo.ReleaseDetainedLicense(ReleasedByUserID, Application.ApplicationID);
+
         }
     }
 }

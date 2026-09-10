@@ -60,10 +60,15 @@ namespace DVLD.Licenses.Local_Licenses.Controls
                 _LicenseID = -1;
                 return;
             }
+            _UpdateLicenseDisplay();
+        }
+
+        private void _UpdateLicenseDisplay()
+        {
             lblLicenseID.Text = _License.LicenseID.ToString();
             lblIsActive.Text = _License.IsActive.ToString();
-            lblIsDetained.Text = _License.IsDetained.ToString();
-            lblClass.Text = _License.LicenseClassInfo.ToString();
+            lblIsDetained.Text = _License.IsDetained ? "Yes" : "No";
+            lblClass.Text = _License.LicenseClassInfo.LicenseClassID.ToString();
 
             // Check if DriverInfo and PersonInfo are available
             if (_License.DriverInfo?.PersonInfo != null)
@@ -87,6 +92,16 @@ namespace DVLD.Licenses.Local_Licenses.Controls
             lblIssueReason.Text = _License.IssueReasonText;
             lblNotes.Text = _License.Notes == string.Empty ? "No Notes" : _License.Notes;
             _LoadPersonImage();
+        }
+
+        public void RefreshLicenseInfo()
+        {
+            if (_LicenseID != -1)
+            {
+                _License = clsLicense.Find(_LicenseID);
+                if (_License != null)
+                    _UpdateLicenseDisplay();
+            }
         }
     }
 }
