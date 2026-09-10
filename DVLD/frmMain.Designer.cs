@@ -175,6 +175,7 @@
             internationalLicenseApplicationsToolStripMenuItem.Name = "internationalLicenseApplicationsToolStripMenuItem";
             internationalLicenseApplicationsToolStripMenuItem.Size = new Size(410, 38);
             internationalLicenseApplicationsToolStripMenuItem.Text = "International License Applications";
+            internationalLicenseApplicationsToolStripMenuItem.Click += internationalLicenseApplicationsToolStripMenuItem_Click;
             // 
             // manageApplicationsToolStripMenuItem
             // 

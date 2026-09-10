@@ -73,7 +73,7 @@
             // 
             ctrlDriverLicenseInfoWithFilter1.Location = new Point(12, 25);
             ctrlDriverLicenseInfoWithFilter1.Name = "ctrlDriverLicenseInfoWithFilter1";
-            ctrlDriverLicenseInfoWithFilter1.Size = new Size(810, 564);
+            ctrlDriverLicenseInfoWithFilter1.Size = new Size(1240, 564);
             ctrlDriverLicenseInfoWithFilter1.TabIndex = 0;
             ctrlDriverLicenseInfoWithFilter1.OnLicenseSelected += ctrlDriverInfoWithFilter1_OnLicenseSelected;
             // 
@@ -104,9 +104,9 @@
             groupBox1.Controls.Add(pictureBox3);
             groupBox1.Controls.Add(label1);
             groupBox1.Font = new Font("Comic Sans MS", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(45, 586);
+            groupBox1.Location = new Point(24, 464);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(968, 141);
+            groupBox1.Size = new Size(1200, 141);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Application Info";
@@ -342,7 +342,7 @@
             btnClose.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnClose.ForeColor = Color.White;
             btnClose.ImageAlign = ContentAlignment.MiddleRight;
-            btnClose.Location = new Point(851, 475);
+            btnClose.Location = new Point(1062, 635);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(162, 40);
             btnClose.TabIndex = 7;
@@ -357,7 +357,7 @@
             btnIssueLicense.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnIssueLicense.ForeColor = Color.White;
             btnIssueLicense.ImageAlign = ContentAlignment.MiddleRight;
-            btnIssueLicense.Location = new Point(851, 429);
+            btnIssueLicense.Location = new Point(894, 635);
             btnIssueLicense.Name = "btnIssueLicense";
             btnIssueLicense.Size = new Size(162, 40);
             btnIssueLicense.TabIndex = 8;
@@ -371,7 +371,7 @@
             llShowLicenseInfo.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             llShowLicenseInfo.LinkBehavior = LinkBehavior.NeverUnderline;
             llShowLicenseInfo.LinkColor = Color.Purple;
-            llShowLicenseInfo.Location = new Point(851, 357);
+            llShowLicenseInfo.Location = new Point(248, 641);
             llShowLicenseInfo.Name = "llShowLicenseInfo";
             llShowLicenseInfo.Size = new Size(190, 27);
             llShowLicenseInfo.TabIndex = 28;
@@ -384,7 +384,7 @@
             llShowLicenseHistory.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             llShowLicenseHistory.LinkBehavior = LinkBehavior.NeverUnderline;
             llShowLicenseHistory.LinkColor = Color.Purple;
-            llShowLicenseHistory.Location = new Point(826, 305);
+            llShowLicenseHistory.Location = new Point(24, 641);
             llShowLicenseHistory.Name = "llShowLicenseHistory";
             llShowLicenseHistory.Size = new Size(218, 27);
             llShowLicenseHistory.TabIndex = 29;
@@ -397,7 +397,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             AutoSize = true;
-            ClientSize = new Size(1130, 749);
+            ClientSize = new Size(1264, 696);
             Controls.Add(llShowLicenseHistory);
             Controls.Add(llShowLicenseInfo);
             Controls.Add(btnIssueLicense);

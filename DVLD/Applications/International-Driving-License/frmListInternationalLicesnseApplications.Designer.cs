@@ -85,6 +85,7 @@
             // cbFilterBy
             // 
             cbFilterBy.FormattingEnabled = true;
+            cbFilterBy.Items.AddRange(new object[] { "None", "International License ID", "Application ID", "Driver ID", "Local License ID", "Is Active" });
             cbFilterBy.Location = new Point(253, 297);
             cbFilterBy.Name = "cbFilterBy";
             cbFilterBy.Size = new Size(121, 23);
@@ -94,17 +95,18 @@
             // cbIsReleased
             // 
             cbIsReleased.FormattingEnabled = true;
+            cbIsReleased.Items.AddRange(new object[] { "All", "Yes", "No" });
             cbIsReleased.Location = new Point(380, 297);
             cbIsReleased.Name = "cbIsReleased";
-            cbIsReleased.Size = new Size(121, 23);
+            cbIsReleased.Size = new Size(90, 23);
             cbIsReleased.TabIndex = 5;
             cbIsReleased.SelectedIndexChanged += cbIsReleased_SelectedIndexChanged;
             // 
             // txtFilterValue
             // 
-            txtFilterValue.Location = new Point(507, 297);
+            txtFilterValue.Location = new Point(380, 297);
             txtFilterValue.Name = "txtFilterValue";
-            txtFilterValue.Size = new Size(281, 23);
+            txtFilterValue.Size = new Size(162, 23);
             txtFilterValue.TabIndex = 6;
             txtFilterValue.TextChanged += txtFilterValue_TextChanged;
             txtFilterValue.KeyPress += txtFilterValue_KeyPress;
@@ -122,6 +124,7 @@
             // dgvInternationalLicenses
             // 
             dgvInternationalLicenses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvInternationalLicenses.ContextMenuStrip = cmsApplications;
             dgvInternationalLicenses.Location = new Point(12, 365);
             dgvInternationalLicenses.Name = "dgvInternationalLicenses";
             dgvInternationalLicenses.Size = new Size(994, 253);

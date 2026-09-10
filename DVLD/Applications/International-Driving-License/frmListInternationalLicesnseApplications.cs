@@ -1,4 +1,6 @@
-﻿using DVLD.People;
+﻿using DVLD.Applications.International_Driving_License;
+using DVLD.Licenses.International_Licenses;
+using DVLD.People;
 using DVLD_Business;
 using System;
 using System.Collections.Generic;
@@ -13,6 +15,7 @@ namespace DVLD.Applications.International_License
     public partial class frmListInternationalLicesnseApplications : Form
     {
         private DataTable _dtInternationalLicenseApplications;
+
         public frmListInternationalLicesnseApplications()
         {
             InitializeComponent();
@@ -26,8 +29,15 @@ namespace DVLD.Applications.International_License
         private void frmListInternationalLicesnseApplications_Load(object sender, EventArgs e)
         {
             _dtInternationalLicenseApplications = clsInternationalLicense.GetAllInternationalLicenses();
-            cbFilterBy.SelectedIndex = 0;
+
+            // Only set a default selection if the ComboBox actually has items to avoid ArgumentOutOfRangeException.
+            if (cbFilterBy.Items.Count > 0)
+                cbFilterBy.SelectedIndex = 0;
+
             dgvInternationalLicenses.DataSource = _dtInternationalLicenseApplications;
+
+            UpdateInternationalLicensesCount();
+
             if (dgvInternationalLicenses.Rows.Count > 0)
             {
                 dgvInternationalLicenses.Columns[0].HeaderText = "Int.License ID";
@@ -42,29 +52,38 @@ namespace DVLD.Applications.International_License
                 dgvInternationalLicenses.Columns[3].HeaderText = "L.License ID";
                 dgvInternationalLicenses.Columns[3].Width = 130;
 
-                dgvInternationalLicenses.Columns[3].HeaderText = "Issue Date";
-                dgvInternationalLicenses.Columns[3].Width = 180;
+                dgvInternationalLicenses.Columns[4].HeaderText = "Issue Date";
+                dgvInternationalLicenses.Columns[4].Width = 180;
 
-                dgvInternationalLicenses.Columns[3].HeaderText = "Expiration Date";
-                dgvInternationalLicenses.Columns[3].Width = 180;
+                dgvInternationalLicenses.Columns[5].HeaderText = "Expiration Date";
+                dgvInternationalLicenses.Columns[5].Width = 180;
 
-                dgvInternationalLicenses.Columns[3].HeaderText = "Is Active";
-                dgvInternationalLicenses.Columns[3].Width = 120;
+                dgvInternationalLicenses.Columns[6].HeaderText = "Is Active";
+                dgvInternationalLicenses.Columns[6].Width = 120;
             }
+        }
+
+        private void UpdateInternationalLicensesCount()
+        {
+            if (_dtInternationalLicenseApplications == null)
+                return;
+
+            lblInternationalLicensesRecords.Text =
+                _dtInternationalLicenseApplications.DefaultView.Count.ToString();
         }
 
         private void btnNewApplication_Click(object sender, EventArgs e)
         {
-            //frmNewInternationalLicenseApplication frm = new frmNewInternationalLicenseApplication();
-            //frm.ShowDialog();
-            //frmListInternationalLicesnseApplications.Load(null, null);
+            frmNewInternationalLicenseApplication frm = new frmNewInternationalLicenseApplication();
+            frm.ShowDialog();
+            frmListInternationalLicesnseApplications_Load(null, null);
         }
 
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //int InternationalLicenseID = (int)dgvInternationalLicenses.CurrentRow.Cells[0].Value;
-            //frmShowInternationalLicenseInfo frm = new frmShowInternationalLicenseInfo(InternationalLicenseID);
-            //frm.ShowDialog();
+            int InternationalLicenseID = (int)dgvInternationalLicenses.CurrentRow.Cells[0].Value;
+            frmShowInternationalLicenseInfo frm = new frmShowInternationalLicenseInfo(InternationalLicenseID);
+            frm.ShowDialog();
         }
 
         private void PesonDetailsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -96,20 +115,22 @@ namespace DVLD.Applications.International_License
             {
                 txtFilterValue.Visible = cbFilterBy.Text != "None";
                 cbIsReleased.Visible = false;
+
                 if (cbIsReleased.Text == "None")
                     txtFilterValue.Enabled = false;
                 else
                     txtFilterValue.Enabled = true;
+
                 txtFilterValue.Text = string.Empty;
                 txtFilterValue.Focus();
             }
-
         }
 
         private void cbIsReleased_SelectedIndexChanged(object sender, EventArgs e)
         {
             string FilterColumn = "IsActive";
             string FilterValue = cbIsReleased.Text;
+
             switch (FilterValue)
             {
                 case "All":
@@ -121,16 +142,20 @@ namespace DVLD.Applications.International_License
                     FilterValue = "0";
                     break;
             }
+
             if (FilterValue == "All")
                 _dtInternationalLicenseApplications.DefaultView.RowFilter = string.Empty;
             else
-                _dtInternationalLicenseApplications.DefaultView.RowFilter = string.Format("[{0}]={1}", FilterColumn, FilterValue);
-            lblInternationalLicensesRecords.Text = _dtInternationalLicenseApplications.Rows.Count.ToString();
+                _dtInternationalLicenseApplications.DefaultView.RowFilter =
+                    string.Format("[{0}]={1}", FilterColumn, FilterValue);
+
+            UpdateInternationalLicensesCount();
         }
 
         private void txtFilterValue_TextChanged(object sender, EventArgs e)
         {
             string FilterColumn = string.Empty;
+
             switch (cbFilterBy.Text)
             {
                 case "International License ID":
@@ -152,14 +177,18 @@ namespace DVLD.Applications.International_License
                     FilterColumn = "None";
                     break;
             }
+
             if (txtFilterValue.Text.Trim() == string.Empty || FilterColumn == "None")
             {
                 _dtInternationalLicenseApplications.DefaultView.RowFilter = string.Empty;
-                lblInternationalLicensesRecords.Text = dgvInternationalLicenses.Rows.Count.ToString();
+                UpdateInternationalLicensesCount();
                 return;
             }
-            _dtInternationalLicenseApplications.DefaultView.RowFilter = string.Format("[{0}]={1}", FilterColumn, txtFilterValue.Text.Trim());
-            lblInternationalLicensesRecords.Text = _dtInternationalLicenseApplications.Rows.Count.ToString();
+
+            _dtInternationalLicenseApplications.DefaultView.RowFilter =
+                string.Format("[{0}]={1}", FilterColumn, txtFilterValue.Text.Trim());
+
+            UpdateInternationalLicensesCount();
         }
 
         private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)

@@ -79,7 +79,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(966, 932);
+            AutoScroll = true;
+            ClientSize = new Size(966, 749);
             Controls.Add(lblTitle);
             Controls.Add(btnClose);
             Controls.Add(ctrlDriverLicenses1);
@@ -87,6 +88,7 @@
             Name = "frmShowPersonLicenseHistory";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmShowPersonLicenseHistory";
+            WindowState = FormWindowState.Maximized;
             Load += frmShowPersonLicenseHistory_Load;
             ResumeLayout(false);
             PerformLayout();
