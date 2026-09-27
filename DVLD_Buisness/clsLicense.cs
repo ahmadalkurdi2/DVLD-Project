@@ -103,7 +103,7 @@ namespace DVLD_Business
         }
         private bool _UpdateLicense()
         {
-            return clsLicenseData.UpdateLicense(this.ApplicationID, this.LicenseID, this.DriverID, this.LicenseClass,
+            return clsLicenseData.UpdateLicense(this.LicenseID, this.ApplicationID, this.DriverID, this.LicenseClass,
                this.IssueDate, this.ExpirationDate, this.Notes, this.PaidFees,
                this.IsActive, (byte)this.IssueReason, this.CreatedByUserID);
         }
@@ -248,12 +248,12 @@ namespace DVLD_Business
             return NewLicense;
         }
 
-        public int Detain(float FineFees,int CreatedByUserID)
+        public int Detain(float FineFees, int CreatedByUserID)
         {
             clsDetainedLicense detainedLicense = new clsDetainedLicense();
             detainedLicense.LicenseID = this.LicenseID;
             detainedLicense.DetainDate = DateTime.Now;
-            detainedLicense.FineFees = Convert.ToSByte(FineFees);
+            detainedLicense.FineFees = (decimal)FineFees;
             detainedLicense.CreatedByUserID = CreatedByUserID;
             if (!detainedLicense.Save())
                 return -1;

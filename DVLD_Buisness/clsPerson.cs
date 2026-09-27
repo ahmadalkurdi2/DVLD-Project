@@ -19,7 +19,12 @@ namespace DVLD_Business
 
         public string FullName
         {
-            get { return FirstName + " " + SecondName + " " + ThirdName + " " + LastName; }
+            get
+            {
+                return string.IsNullOrEmpty(ThirdName)
+                    ? $"{FirstName} {SecondName} {LastName}"
+                    : $"{FirstName} {SecondName} {ThirdName} {LastName}";
+            }
         }
         public string NationalNo { set; get; }
         public DateTime DateOfBirth { set; get; }

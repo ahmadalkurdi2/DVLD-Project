@@ -54,7 +54,13 @@ namespace DVLD_Business
         }
         private bool _AddNewDetainedLicense()
         {
-            return clsDetainedLicenseData.AddNewDetainedLicense(this.LicenseID, this.DetainDate, this.FineFees, this.CreatedByUserID) != -1;
+            int newId = clsDetainedLicenseData.AddNewDetainedLicense(this.LicenseID, this.DetainDate, this.FineFees, this.CreatedByUserID);
+            if (newId != -1)
+            {
+                this.DetainID = newId;
+                return true;
+            }
+            return false;
         }
 
         private bool _UpdateDetainedLicense()

@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -171,7 +171,7 @@ namespace DVLD_DataAccess
             Command.Parameters.AddWithValue("@DriverID", DriverID);
             Connection.Open();
             object result = Command.ExecuteScalar();
-            return result == DBNull.Value ? -1 : Convert.ToInt32(result);
+            return (result == null || result == DBNull.Value) ? -1 : Convert.ToInt32(result);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using DVLD_Business;
+using DVLD_Business;
 
 namespace DVLD.User
 {
@@ -95,7 +95,7 @@ namespace DVLD.User
                 MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
-                MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Failed to save data. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void txtConfirmPassword_Validating(object sender, System.ComponentModel.CancelEventArgs e)

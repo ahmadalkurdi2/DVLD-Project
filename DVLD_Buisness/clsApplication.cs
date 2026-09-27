@@ -24,7 +24,7 @@ namespace DVLD_Business
         {
             get
             {
-                return clsPerson.Find(ApplicantPersonID).FullName;
+                return clsPerson.Find(ApplicantPersonID)?.FullName ?? string.Empty;
             }
         }
         public DateTime ApplicationDate { set; get; }
@@ -62,7 +62,7 @@ namespace DVLD_Business
             this.LastStatusDate = DateTime.Now;
             this.PaidFees = 0;
             this.CreatedByUserID = -1;
-            this.PersonInfo = clsPerson.Find(ApplicantPersonID);
+            this.PersonInfo = null;
             Mode = enMode.AddNew;
         }
 

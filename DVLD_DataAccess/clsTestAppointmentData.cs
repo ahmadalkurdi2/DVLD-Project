@@ -172,7 +172,7 @@ namespace DVLD_DataAccess
             Command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
             Connection.Open();
             object result = Command.ExecuteScalar();
-            return result == DBNull.Value ? -1 : Convert.ToInt32(result);
+            return (result == null || result == DBNull.Value) ? -1 : Convert.ToInt32(result);
         }
     }
 }

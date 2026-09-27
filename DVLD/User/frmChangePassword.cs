@@ -1,4 +1,4 @@
-﻿using DVLD_Business;
+using DVLD_Business;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -47,7 +47,7 @@ namespace DVLD.User
             if (string.IsNullOrEmpty(txtCurrentPassword.Text.Trim()))
             {
                 e.Cancel = true;
-                errorProvider1.SetError(txtCurrentPassword, "Username cannot be blank");
+                errorProvider1.SetError(txtCurrentPassword, "Current password cannot be blank");
                 return;
             }
             else
@@ -89,7 +89,7 @@ namespace DVLD.User
         {
             if (!this.ValidateChildren())
             {
-                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro",
+                MessageBox.Show("Some fields are not valid! Put the mouse over the red icon(s) to see the error.",
                     "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
