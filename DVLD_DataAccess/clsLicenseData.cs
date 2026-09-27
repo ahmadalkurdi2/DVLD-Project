@@ -94,11 +94,7 @@ namespace DVLD_DataAccess
         {
             // 1. Check if the DriverID actually exists in the Drivers table
             if (!_DriverExists(DriverID))
-            {
-                // The caller should ensure a valid driver exists before calling this method.
-                // Return -1 to indicate failure; the caller can then create a driver record.
                 return -1;
-            }
 
             string Query = @"
                               INSERT INTO Licenses
@@ -154,8 +150,7 @@ namespace DVLD_DataAccess
             using var Command = new SqlCommand(Query, Connection);
             Command.Parameters.AddWithValue("@DriverID", DriverID);
             Connection.Open();
-            int count = (int)Command.ExecuteScalar();
-            return count > 0;
+            return (int)Command.ExecuteScalar() > 0;
         }
 
         public static bool UpdateLicense(int LicenseID, int ApplicationID, int DriverID, int LicenseClass,

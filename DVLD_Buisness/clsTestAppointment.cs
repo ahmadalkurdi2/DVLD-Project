@@ -9,8 +9,8 @@ namespace DVLD_Business
 {
     public class clsTestAppointment
     {
-        public enum enMode { AddNew, Update };
-        public enMode Mode = enMode.AddNew;
+        enum enMode { AddNew, Update };
+        enMode Mode = enMode.AddNew;
 
         public int TestAppointmentID { set; get; }
         public clsTestType.enTestType TestTypeID { set; get; }

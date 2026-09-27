@@ -8,8 +8,8 @@ namespace DVLD_Business
 {
     public class clsPerson
     {
-        private enum enMode { AddNew, Update };
-        private enMode Mode = enMode.AddNew;
+        enum enMode { AddNew, Update };
+        enMode Mode = enMode.AddNew;
 
         public int PersonID { set; get; }
         public string FirstName { set; get; }

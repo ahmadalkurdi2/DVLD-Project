@@ -146,11 +146,20 @@ namespace DVLD_DataAccess
         {
             string Query = @"Delete Users 
                                 where UserID = @UserID";
-            using var Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            using var Command = new SqlCommand(Query, Connection);
-            Command.Parameters.AddWithValue("@UserID", UserID);
-            Connection.Open();
-            return Command.ExecuteNonQuery() > 0;
+            try
+            {
+                using var Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+                using var Command = new SqlCommand(Query, Connection);
+                Command.Parameters.AddWithValue("@UserID", UserID);
+                Connection.Open();
+                return Command.ExecuteNonQuery() > 0;
+            }
+            catch (SqlException)
+            {
+                // Delete failed — likely due to a foreign key constraint
+                // (e.g. InternationalLicenses.CreatedByUserID references this user).
+                return false;
+            }
         }
 
         public static bool IsUserExist(int UserID)

@@ -112,12 +112,13 @@ namespace DVLD_Business
         {
             int ApplicationID = -1; int DriverID = -1; int LicenseClass = -1;
             DateTime IssueDate = DateTime.MinValue; DateTime ExpirationDate = DateTime.MinValue;
-            string Notes = "";
+            string Notes = string.Empty;
             decimal PaidFees = 0; bool IsActive = true; int CreatedByUserID = 1;
             byte IssueReason = 1;
+
             if (clsLicenseData.GetLicenseInfoByID(LicenseID, out ApplicationID, out DriverID, out LicenseClass,
-            out IssueDate, out ExpirationDate, out Notes,
-            out PaidFees, out IsActive, out IssueReason, out CreatedByUserID))
+            out IssueDate, out ExpirationDate, out Notes, out PaidFees, out IsActive, out IssueReason, out CreatedByUserID))
+               
                 return new clsLicense(LicenseID, ApplicationID, DriverID, LicenseClass,
                                      IssueDate, ExpirationDate, Notes,
                                      PaidFees, IsActive, (enIssueReason)IssueReason, CreatedByUserID);
@@ -179,9 +180,7 @@ namespace DVLD_Business
             detainedLicense.CreatedByUserID = userID;
 
             if (detainedLicense.Save())
-            {
                 return detainedLicense.DetainID;
-            }
             return -1;
         }
 

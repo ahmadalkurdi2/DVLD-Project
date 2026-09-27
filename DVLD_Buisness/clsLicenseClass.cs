@@ -6,8 +6,8 @@ namespace DVLD_Business
 {
     public class clsLicenseClass
     {
-        private enum enMode { AddNew, Update };
-        private enMode Mode = enMode.AddNew;
+        enum enMode { AddNew, Update };
+        enMode Mode = enMode.AddNew;
         public int LicenseClassID { get; set; }
         public string ClassName { get; set; }
         public string ClassDescription { get; set; }

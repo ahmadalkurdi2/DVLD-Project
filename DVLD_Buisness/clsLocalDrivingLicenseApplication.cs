@@ -10,8 +10,8 @@ namespace DVLD_Business
 {
     public class clsLocalDrivingLicenseApplication : clsApplication
     {
-        public enum enMode { AddNew, Update };
-        public enMode Mode = enMode.AddNew;
+        enum enMode { AddNew, Update };
+        enMode Mode = enMode.AddNew;
 
         public int LocalDrivingLicenseApplicationID { get; set; }
         public int LicenseClassID { set; get; }

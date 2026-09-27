@@ -1,4 +1,4 @@
-﻿using DVLD_Business;
+using DVLD_Business;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +16,7 @@ namespace DVLD.User
             InitializeComponent();
         }
 
-        private static DataTable _dtAllUsers;
+        private DataTable _dtAllUsers;
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -25,17 +25,24 @@ namespace DVLD.User
 
         private void frmListUsers_Load(object sender, EventArgs e)
         {
+            // Reset the filter before replacing the DataTable to avoid
+            // a stale RowFilter being applied to the new DataTable instance.
+            if (_dtAllUsers != null)
+                _dtAllUsers.DefaultView.RowFilter = string.Empty;
+
             _dtAllUsers = clsUser.GetAllUsers();
             dgvUsers.DataSource = _dtAllUsers;
 
-            // Populate filter combobox
-            cbFilterBy.Items.Clear();
-            cbFilterBy.Items.Add("None");
-            cbFilterBy.Items.Add("User ID");
-            cbFilterBy.Items.Add("Person ID");
-            cbFilterBy.Items.Add("Full Name");
-            cbFilterBy.Items.Add("UserName");
-            cbFilterBy.Items.Add("Is Active");
+            // Populate filter combobox only on first load
+            if (cbFilterBy.Items.Count == 0)
+            {
+                cbFilterBy.Items.Add("None");
+                cbFilterBy.Items.Add("User ID");
+                cbFilterBy.Items.Add("Person ID");
+                cbFilterBy.Items.Add("Full Name");
+                cbFilterBy.Items.Add("UserName");
+                cbFilterBy.Items.Add("Is Active");
+            }
             cbFilterBy.SelectedIndex = 0;
 
             cbIsActive.Items.Clear();
@@ -125,7 +132,12 @@ namespace DVLD.User
             if (FilterColumn != "FullName" && FilterColumn != "UserName")
                 _dtAllUsers.DefaultView.RowFilter = string.Format("[{0}]={1}", FilterColumn, txtFilterValue.Text.Trim());
             else
-                _dtAllUsers.DefaultView.RowFilter = string.Format("[{0}] like '%{1}%'", FilterColumn, txtFilterValue.Text.Trim());
+            {
+                // Escape single quotes to prevent EvaluateException when the
+                // user types an apostrophe (e.g. "O'Brien").
+                string safeFilter = txtFilterValue.Text.Trim().Replace("'", "''");
+                _dtAllUsers.DefaultView.RowFilter = string.Format("[{0}] like '%{1}%'", FilterColumn, safeFilter);
+            }
             lblRecordsCount.Text = _dtAllUsers.DefaultView.Count.ToString();
         }
 
@@ -202,14 +214,22 @@ namespace DVLD.User
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var confirm = MessageBox.Show(
+                "Are you sure you want to delete this user?\nThis action cannot be undone.",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (confirm != DialogResult.Yes)
+                return;
+
             if (clsUser.DeleteUser((int)dgvUsers.CurrentRow.Cells[0].Value))
             {
-                MessageBox.Show("User has been deleted successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("User has been deleted successfully.", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 frmListUsers_Load(null, null);
             }
             else
-                MessageBox.Show("User is not delted due to data connected to it.", "Faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                MessageBox.Show("Failed to delete user. The user may have associated records (e.g. issued licenses) that prevent deletion.", "Delete Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

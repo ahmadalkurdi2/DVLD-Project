@@ -8,8 +8,8 @@ namespace DVLD_Business
 {
     public class clsInternationalLicense : clsApplication
     {
-        public enum enMode { AddNew, Update };
-        public enMode Mode = enMode.AddNew;
+        enum enMode { AddNew, Update };
+        enMode Mode = enMode.AddNew;
 
         public clsDriver DriverInfo;
         public int InternationalLicenseID { set; get; }
