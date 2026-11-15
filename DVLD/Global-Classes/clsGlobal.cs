@@ -1,4 +1,5 @@
 ﻿using DVLD_Business;
+using Microsoft.Win32;
 
 namespace DVLD.Global_Classes
 {// C#
@@ -6,24 +7,24 @@ namespace DVLD.Global_Classes
     {
         public static clsUser CurrentUser;
 
+        private const string CredentialsRegistryPath = @"HKEY_CURRENT_USER\Software\DVLD";
+        private const string UserNameValueName = "UserName";
+        private const string PasswordValueName = "Password";
+
         public static bool RememberUsernameAndPassword(string UserName, string Password)
         {
             try
             {
-                string CurrentDirectory = System.IO.Directory.GetCurrentDirectory();
-                string FilePath = CurrentDirectory + "\\data.txt";
+                if (string.IsNullOrEmpty(UserName))
+                {
+                    Registry.CurrentUser.DeleteSubKeyTree(@"Software\DVLD", throwOnMissingSubKey: false);
+                    return true;
+                }
 
-                if (UserName == string.Empty && File.Exists(FilePath))
-                {
-                    File.Delete(FilePath);
-                    return true;
-                }
-                string DataToSave = UserName + "#//#" + Password;
-                using (StreamWriter Writer = new StreamWriter(FilePath))
-                {
-                    Writer.WriteLine(DataToSave);
-                    return true;
-                }
+                Registry.SetValue(CredentialsRegistryPath, UserNameValueName, UserName, RegistryValueKind.String);
+                Registry.SetValue(CredentialsRegistryPath, PasswordValueName, Password, RegistryValueKind.String);
+
+                return true;
             }
             catch (Exception ex)
             {
@@ -36,33 +37,18 @@ namespace DVLD.Global_Classes
         {
             try
             {
-                string CurrentDirectory = System.IO.Directory.GetCurrentDirectory();
-                string FilePath = CurrentDirectory + "\\data.txt";
+                object? StoredUserName = Registry.GetValue(CredentialsRegistryPath, UserNameValueName, null);
+                object? StoredPassword = Registry.GetValue(CredentialsRegistryPath, PasswordValueName, null);
 
-                if (File.Exists(FilePath))
+                if (StoredUserName is string UserNameValue &&
+                    StoredPassword is string PasswordValue &&
+                    !string.IsNullOrEmpty(UserNameValue))
                 {
-                    using (StreamReader Reader = new StreamReader(FilePath))
-                    {
-                        // 1. Read ONLY the first line. We only ever save one line, so a loop is unnecessary.
-                        string Line = Reader.ReadLine();
-
-                        // 2. Safety check: Ensure the file isn't completely empty
-                        if (!string.IsNullOrEmpty(Line))
-                        {
-                            string[] Result = Line.Split(new string[] { "#//#" }, StringSplitOptions.None);
-
-                            // 3. Data Integrity check: Ensure the split actually produced exactly 2 parts
-                            if (Result.Length == 2)
-                            {
-                                UserName = Result[0];
-                                Password = Result[1];
-                                return true; // Success!
-                            }
-                        }
-                    }
+                    UserName = UserNameValue;
+                    Password = PasswordValue;
+                    return true;
                 }
 
-                // If the file didn't exist, was empty, or was malformed, return false
                 return false;
             }
             catch (Exception ex)
