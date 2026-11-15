@@ -1,1 +1,24 @@
-﻿  *.config
+﻿# Visual Studio and IDE files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build output
+[Bb]in/
+[Oo]bj/
+
+# Local configuration and secrets
+*.config
+*.local.json
+appsettings.Development.json
+appsettings.Local.json
+.env
+.env.*
+!.env.example
+
+# Local credential and data files
+data.txt
+credentials.json
+secrets.json
