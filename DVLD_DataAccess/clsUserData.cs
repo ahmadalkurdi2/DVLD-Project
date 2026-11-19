@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using System.Security.Cryptography;
 
 namespace DVLD_DataAccess
 {
@@ -16,7 +17,7 @@ namespace DVLD_DataAccess
             Password = string.Empty;
             IsActive = false;
 
-            string Query = "SELECT PersonID, UserName, Password, IsActive FROM Users WHERE UserID = @UserID";
+            string Query = "SELECT PersonID, UserName, IsActive FROM Users WHERE UserID = @UserID";
             using var Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             using var Command = new SqlCommand(Query, Connection);
             Command.Parameters.AddWithValue("@UserID", UserID);
@@ -26,8 +27,7 @@ namespace DVLD_DataAccess
             {
                 PersonID = Reader.GetInt32(0);
                 UserName = Reader.GetString(1);
-                Password = Reader.GetString(2);
-                IsActive = Reader.GetBoolean(3);
+                IsActive = Reader.GetBoolean(2);
                 return true;
             }
             return false;
@@ -40,7 +40,7 @@ namespace DVLD_DataAccess
             UserName = string.Empty;
             Password = string.Empty;
             IsActive = false;
-            string Query = "SELECT UserID, UserName, Password, IsActive FROM Users WHERE PersonID = @PersonID";
+            string Query = "SELECT UserID, UserName, IsActive FROM Users WHERE PersonID = @PersonID";
             using var Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             using var Command = new SqlCommand(Query, Connection);
             Command.Parameters.AddWithValue("@PersonID", PersonID);
@@ -50,8 +50,7 @@ namespace DVLD_DataAccess
             {
                 UserID = Reader.GetInt32(0);
                 UserName = Reader.GetString(1);
-                Password = Reader.GetString(2);
-                IsActive = Reader.GetBoolean(3);
+                IsActive = Reader.GetBoolean(2);
                 return true;
             }
             return false;
@@ -63,28 +62,57 @@ namespace DVLD_DataAccess
             PersonID = 0;
             IsActive = false;
 
-            string query = @"SELECT UserID, PersonID, UserName, Password, IsActive 
-                     FROM Users 
-                     WHERE UserName = @Username AND Password = @Password";
-
+            string query = "SELECT UserID, PersonID, Password, IsActive FROM Users WHERE UserName = @Username";
             using var connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             using var command = new SqlCommand(query, connection);
-
             command.Parameters.AddWithValue("@Username", UserName);
-            command.Parameters.AddWithValue("@Password", Password);
 
             connection.Open();
-            using var reader = command.ExecuteReader();
-
-            if (reader.Read())
+            int foundUserID;
+            int foundPersonID;
+            bool foundIsActive;
+            string storedPassword;
+            using (var reader = command.ExecuteReader())
             {
-                UserID = reader.GetInt32(0);
-                PersonID = reader.GetInt32(1);
-                IsActive = reader.GetBoolean(4);
-                return true;
+                if (!reader.Read())
+                    return false;
+
+                foundUserID = reader.GetInt32(0);
+                foundPersonID = reader.GetInt32(1);
+                storedPassword = reader.GetString(2);
+                foundIsActive = reader.GetBoolean(3);
             }
 
-            return false;
+            bool isLegacyPassword = storedPassword.Length != 64 || !IsHexString(storedPassword);
+            bool passwordMatches = isLegacyPassword
+                ? string.Equals(Password, storedPassword, StringComparison.Ordinal)
+                : clsPasswordHasher.VerifyPassword(Password, storedPassword);
+            if (!passwordMatches)
+                return false;
+
+            if (isLegacyPassword)
+            {
+                using var updateCommand = new SqlCommand(
+                    "UPDATE Users SET Password = @Password WHERE UserID = @UserID", connection);
+                updateCommand.Parameters.Add("@Password", SqlDbType.NVarChar, 64).Value = clsPasswordHasher.HashPassword(Password);
+                updateCommand.Parameters.AddWithValue("@UserID", foundUserID);
+                updateCommand.ExecuteNonQuery();
+            }
+
+            UserID = foundUserID;
+            PersonID = foundPersonID;
+            IsActive = foundIsActive;
+            return true;
+        }
+
+        private static bool IsHexString(string Value)
+        {
+            foreach (char Character in Value)
+            {
+                if (!Uri.IsHexDigit(Character))
+                    return false;
+            }
+            return true;
         }
 
         public static int AddNewUser(int PersonID, string UserName,
@@ -97,7 +125,7 @@ namespace DVLD_DataAccess
             using var Command = new SqlCommand(Query, Connection);
             Command.Parameters.AddWithValue("@PersonID", PersonID);
             Command.Parameters.AddWithValue("@UserName", UserName);
-            Command.Parameters.AddWithValue("@Password", Password);
+            Command.Parameters.Add("@Password", SqlDbType.NVarChar, 64).Value = clsPasswordHasher.HashPassword(Password);
             Command.Parameters.AddWithValue("@IsActive", IsActive);
 
             Connection.Open();
@@ -106,19 +134,17 @@ namespace DVLD_DataAccess
         }
 
         public static bool UpdateUser(int UserID, int PersonID, string UserName,
-             string Password, bool IsActive)
+             bool IsActive)
         {
-            string Query = @"Update  Users  
-                            set PersonID = @PersonID,
+            string Query = @"UPDATE Users
+                            SET PersonID = @PersonID,
                                 UserName = @UserName,
-                                Password = @Password,
                                 IsActive = @IsActive
-                                where UserID = @UserID";
+                            WHERE UserID = @UserID";
             using var Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             using var Command = new SqlCommand(Query, Connection);
             Command.Parameters.AddWithValue("@PersonID", PersonID);
             Command.Parameters.AddWithValue("@UserName", UserName);
-            Command.Parameters.AddWithValue("@Password", Password);
             Command.Parameters.AddWithValue("@IsActive", IsActive);
             Command.Parameters.AddWithValue("@UserID", UserID);
 
@@ -195,17 +221,61 @@ namespace DVLD_DataAccess
             return Reader.HasRows;
         }
 
-        public static bool ChangePassword(int UserID, string NewPassword)
+        public static bool VerifyPassword(int UserID, string Password)
         {
-            string Query = @"Update  Users  
-                            set Password = @Password
-                            where UserID = @UserID";
+            const string Query = "SELECT Password FROM Users WHERE UserID = @UserID";
             using var Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             using var Command = new SqlCommand(Query, Connection);
             Command.Parameters.AddWithValue("@UserID", UserID);
-            Command.Parameters.AddWithValue("@Password", NewPassword);
             Connection.Open();
-            return Command.ExecuteNonQuery() > 0;
+            object storedPassword = Command.ExecuteScalar();
+            if (storedPassword == null || storedPassword == DBNull.Value)
+                return false;
+
+            string storedPasswordText = Convert.ToString(storedPassword);
+            bool isHash = storedPasswordText.Length == 64 && IsHexString(storedPasswordText);
+            return isHash
+                ? clsPasswordHasher.VerifyPassword(Password, storedPasswordText)
+                : string.Equals(Password, storedPasswordText, StringComparison.Ordinal);
+        }
+
+        public static bool ChangePassword(int UserID, string CurrentPassword, string NewPassword)
+        {
+            using var Connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            Connection.Open();
+            using var Transaction = Connection.BeginTransaction();
+
+            const string selectQuery = "SELECT Password FROM Users WITH (UPDLOCK, ROWLOCK) WHERE UserID = @UserID";
+            using var selectCommand = new SqlCommand(selectQuery, Connection, Transaction);
+            selectCommand.Parameters.AddWithValue("@UserID", UserID);
+            object storedPassword = selectCommand.ExecuteScalar();
+            if (storedPassword == null || storedPassword == DBNull.Value)
+            {
+                Transaction.Rollback();
+                return false;
+            }
+
+            string storedPasswordText = Convert.ToString(storedPassword);
+            bool isHash = storedPasswordText.Length == 64 && IsHexString(storedPasswordText);
+            bool passwordMatches = isHash
+                ? clsPasswordHasher.VerifyPassword(CurrentPassword, storedPasswordText)
+                : string.Equals(CurrentPassword, storedPasswordText, StringComparison.Ordinal);
+            if (!passwordMatches)
+            {
+                Transaction.Rollback();
+                return false;
+            }
+
+            const string updateQuery = "UPDATE Users SET Password = @Password WHERE UserID = @UserID";
+            using var updateCommand = new SqlCommand(updateQuery, Connection, Transaction);
+            updateCommand.Parameters.Add("@Password", SqlDbType.NVarChar, 64).Value = clsPasswordHasher.HashPassword(NewPassword);
+            updateCommand.Parameters.AddWithValue("@UserID", UserID);
+            bool updated = updateCommand.ExecuteNonQuery() > 0;
+            if (updated)
+                Transaction.Commit();
+            else
+                Transaction.Rollback();
+            return updated;
         }
     }
 }

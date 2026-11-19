@@ -53,7 +53,7 @@ namespace DVLD.User
             else
                 errorProvider1.SetError(txtCurrentPassword, null);
 
-            if (_User.Password != txtCurrentPassword.Text.Trim())
+            if (!clsUser.VerifyPassword(_UserID, txtCurrentPassword.Text.Trim()))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(txtCurrentPassword, "Current password is wrong!");
@@ -93,8 +93,7 @@ namespace DVLD.User
                     "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            _User.Password = txtNewPassword.Text;
-            if (_User.Save())
+            if (clsUser.ChangePassword(_UserID, txtCurrentPassword.Text.Trim(), txtNewPassword.Text.Trim()))
             {
                 MessageBox.Show("Password Changed Successfully.",
                    "Saved.", MessageBoxButtons.OK, MessageBoxIcon.Information);

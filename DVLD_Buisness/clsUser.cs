@@ -1,6 +1,7 @@
 ﻿using DVLD_DataAccess;
 using System;
 using System.Data;
+using System.Diagnostics;
 
 namespace DVLD_Business
 {
@@ -31,7 +32,7 @@ namespace DVLD_Business
             this.PersonID = PersonID;
             this.PersonInfo = clsPerson.Find(PersonID);
             this.UserName = Username;
-            this.Password = Password;
+            this.Password = string.Empty;
             this.IsActive = IsActive;
             Mode = enMode.Update;
         }
@@ -40,12 +41,16 @@ namespace DVLD_Business
         {
             this.UserID = clsUserData.AddNewUser(this.PersonID, this.UserName,
                 this.Password, this.IsActive);
-            return this.UserID != -1;
+            if (this.UserID == -1)
+                return false;
+
+            this.Password = string.Empty;
+            return true;
         }
         private bool _UpdateUser()
         {
             return clsUserData.UpdateUser(this.UserID, this.PersonID, this.UserName,
-                this.Password, this.IsActive);
+                this.IsActive);
         }
         public static clsUser FindByUserID(int UserID)
         {
@@ -78,9 +83,19 @@ namespace DVLD_Business
 
             bool IsFound = clsUserData.GetUserInfoByUsernameAndPassword(UserName, Password, out PersonID, out UserID, out IsActive);
             if (IsFound)
-                return new clsUser(UserID, PersonID, UserName, Password, IsActive);
+                return new clsUser(UserID, PersonID, UserName, string.Empty, IsActive);
             else
                 return null;
+        }
+
+        public static bool VerifyPassword(int UserID, string Password)
+        {
+            return clsUserData.VerifyPassword(UserID, Password);
+        }
+
+        public static bool ChangePassword(int UserID, string CurrentPassword, string NewPassword)
+        {
+            return clsUserData.ChangePassword(UserID, CurrentPassword, NewPassword);
         }
 
         public bool Save()
@@ -91,6 +106,7 @@ namespace DVLD_Business
                     if (_AddNewUser())
                     {
                         Mode = enMode.Update;
+                        EventLog.WriteEntry("DVLD", $"User {UserID} was created.", EventLogEntryType.Information);
                         return true;
                     }
                     else

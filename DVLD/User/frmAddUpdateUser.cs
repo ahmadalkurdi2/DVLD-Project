@@ -45,6 +45,8 @@ namespace DVLD.User
             txtUserName.Text = string.Empty;
             txtPassword.Text = string.Empty;
             txtConfirmPassword.Text = string.Empty;
+            txtPassword.Enabled = _Mode == enMode.AddNew;
+            txtConfirmPassword.Enabled = _Mode == enMode.AddNew;
             chkIsActive.Checked = true;
         }
 
@@ -60,8 +62,6 @@ namespace DVLD.User
             }
             lblUserID.Text = _User.UserID.ToString();
             txtUserName.Text = _User.UserName;
-            txtPassword.Text = _User.Password;
-            txtConfirmPassword.Text = _User.Password;
             chkIsActive.Checked = _User.IsActive;
             ctrlPersonCardWithFilter1.LoadPersonInfo(_User.PersonID);
         }
@@ -83,7 +83,8 @@ namespace DVLD.User
             }
             _User.PersonID = ctrlPersonCardWithFilter1.PersonID;
             _User.UserName = txtUserName.Text.Trim();
-            _User.Password = txtPassword.Text.Trim();
+            if (_Mode == enMode.AddNew)
+                _User.Password = txtPassword.Text.Trim();
             _User.IsActive = chkIsActive.Checked;
 
             if (_User.Save())
@@ -100,7 +101,7 @@ namespace DVLD.User
 
         private void txtConfirmPassword_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (txtConfirmPassword.Text.Trim() != txtPassword.Text.Trim())
+            if (_Mode == enMode.AddNew && txtConfirmPassword.Text.Trim() != txtPassword.Text.Trim())
             {
                 e.Cancel = true;
                 errorProvider1.SetError(txtConfirmPassword, "Password Confirmation does not match Password!");
@@ -111,7 +112,7 @@ namespace DVLD.User
 
         private void txtPassword_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtPassword.Text.Trim()))
+            if (_Mode == enMode.AddNew && string.IsNullOrEmpty(txtPassword.Text.Trim()))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(txtPassword, "Password cannot be blank");
